@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Comparison And Logical Operators</title>
+    <title>For each</title>
 </head>
 <body>
 
