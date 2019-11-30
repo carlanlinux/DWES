@@ -1,0 +1,51 @@
+GET: Entrar en una URL o link
+POST: Enviar un formulario o algo al servidor
+COOKIES: Las cookies. 
+
+Para enviar datos seguros o poder poner caracteres especiales, lo que usamos es PHP URL encoding. 
+
+MYSQL
+CRUD
+Create, Read, Update, Delete
+
+SQL SELECT(Read)
+SELECT * FROM table
+WHERE column1 = 'some_text'
+ORDER BY column1, column2 ASC; o DESC si queremos descendiente
+
+SQL INSERT (Create)
+INSERT INTO table (column1, column2, column3)
+VALUES (val1, val2, val3);
+
+SQL UPDATE
+UPDATE table
+SET column1 = 'some_text';
+WHERE id=1;
+
+SQL DELETE
+DELETE FROM table
+WHERE id = 1;
+
+
+[2019-11-30 12:14:10] Connected
+sql> create database  widgetcoorp
+[2019-11-30 12:14:10] 1 row affected in 10 ms
+sql> USE widgetcoorp
+[2019-11-30 12:14:46] completed in 21 ms
+sql> create table subjects (
+         id int(11) NOT null auto_increment,
+         menu_name varchar(30) not null,
+         position int(3) not null,
+         visible tinyint(1) not null,
+         PRIMARY KEY (id)
+                       
+                           
+     )
+
+insert into subjects(menu_name, position, visible)
+values ('about Widget Corop', 1,1);
+
+
+select id,menu_name from subjects
+where visible = 1
+order by position DESC;     
