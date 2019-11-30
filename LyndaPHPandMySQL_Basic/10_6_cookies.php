@@ -5,9 +5,6 @@
     <title>Cookies</title>
 </head>
 <body>
-
-
-
 <?php /* Setting a cookie
 //Antes de usar una cookie tenemos que crear la cookie
 setcookie ($name, $value, $expire);
@@ -22,9 +19,6 @@ setcookie('lastre', 45, time()+(60*60*24*7));
 
 ?>
 
-
-
-<?php ?> <br>
 </body>
 </html>
 
