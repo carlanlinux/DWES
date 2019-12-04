@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Datos de la agenda</h1>
+lala
 <?php
     //1. Creamos el array donde tiene que ir toda la información
     //$agenda = array();
@@ -21,6 +22,7 @@
           echo $nombre . " | " . $telefono; //Me pinta n | Pt | 9
 
           $agenda[$nombre] = $telefono;
+
 }
 
 
