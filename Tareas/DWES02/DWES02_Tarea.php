@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Aplicación Agenda - Tarea DEWS02</title>
@@ -21,19 +21,17 @@
 ?>
 <hr>
 
-<form action="DWES02_process.php" method="post">
+<form action="" method="post">
     Nombre: <input type="text" name="nombre"  value="" required><br>
     Teléfono: <input type="number" name="telefono" value=""><br>
 
 
     <?php
-    $agenda = ["Pepe" => "91882882"];
-    $agenda["Juanjo"] = "9kjkjkjk";
+
 
 
     foreach ($agenda as $nombre => $telefono) {
-        echo "<input type=\"hidden\" name=\"nombre\"  value=\"{$nombre}\" required><br>";
-        echo "<input type=\"hidden\" name=\"telefono\"  value=\"{$telefono}\" required><br>";
+        echo "<input type=\"hidden\" name=\"{$nombre}\"  value=\"{$telefono}\" required><br>";
     } ?>
 
     <input type="submit"><br>
