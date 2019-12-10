@@ -1,0 +1,15 @@
+INSERT INTO dwes.familia (cod, nombre) VALUES ('CAMARA', 'C?maras digitales');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('CONSOL', 'Consolas');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('EBOOK', 'Libros electr?nicos');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('IMPRES', 'Impresoras');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('MEMFLA', 'Memorias flash');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('MP3', 'Reproductores MP3');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('MULTIF', 'Equipos multifunci');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('NETBOK', 'Netbooks');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('ORDENA', 'Ordenadores');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('PORTAT', 'Ordenadores port?tiles');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('ROUTER', 'Routers');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('SAI', 'Sistemas de alimentaci?n ininterrumpida');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('SOFTWA', 'Software');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('TV', 'Televisores');
+INSERT INTO dwes.familia (cod, nombre) VALUES ('VIDEOC', 'Videoc?maras');
