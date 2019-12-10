@@ -61,6 +61,8 @@ if ($error != null) echo "Error $error de conexión a la base de datos: $connect
             }
 
         }
+        $productos->close();
+        $query->close();
         ?>
 
         </table>
