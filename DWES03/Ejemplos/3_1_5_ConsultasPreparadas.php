@@ -21,7 +21,7 @@ La gracia está que las consultas preparadas admiten parámetros para que sean d
     //Indicamos que se va a usar una consulta preparada
     $consulta = $connection->stmt_init();
     //Preparamos la consulta en el servidor
-    $consulta->prepare('insert into familia (cod,nombre) values ("TABLET", "TABLET PC")');
+    //$consulta->prepare('insert into familia (cod,nombre) values ("TABLET", "TABLET PC")');
 
     //Ejecutamos la consulta tantas veces como sea necesario con execute
     $consulta->execute();
@@ -54,9 +54,25 @@ La gracia está que las consultas preparadas admiten parámetros para que sean d
 
     //Ejectuamos la consulta;
     $consulta->execute();
-    echo "$consulta";
 
+    //Cerramos la consulta preparada
     $consulta->close();
+
+    // bind_param permite tener una consulta preparada en el servidor MySQL y ejecutarla tantas veces como quieras
+    // cambiando ciertos valores cada vez
+
+    //Comenzamos la consulta y la preparamos y ejecutamos
+    $consulta2 = $connection->stmt_init();
+    $consulta2->prepare('select producto, unidades from stock where unidades<2');
+    $consulta2->execute();
+
+    //Asociamos los resultados que vamos a sacar a dos variables
+    $consulta2->bind_result($producto, $unidades);
+    //Mientras que podamos hacer fetch, que sea true pintamos el número de unidades.
+    while($consulta2->fetch()){
+        echo "<p>Producto $producto tiene en stock $unidades unidades";
+    }
+    $consulta2->close();
 
     //Cerramos conexión de la base de datos
     $connection->close()
