@@ -1,4 +1,4 @@
-create schema dwes collate utf8_general_ci;
+use dwes
 
 create table familia
 (
