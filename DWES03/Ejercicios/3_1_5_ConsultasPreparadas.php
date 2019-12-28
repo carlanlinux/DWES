@@ -48,19 +48,22 @@ if ($error != null) echo "Error $error de conexión a la base de datos: $connect
             //Poner la query, ojo con las comillas ismples a la hora de poner las cadenas en la query! Si no peta!!
             $query = $connection->query("select tienda, unidades from stock where producto = (select cod from producto where nombre_corto = '$seleccion')");
             //pintar una tabla
+            echo "<form id='actualizarStock'>";
             echo "<table border='2' cellspacing='0'>";
-            echo "<th>Tienda</th><th>Unidades</th>";
+            echo "<th>Tienda</th><th>Unidades</th><th>Actualizar stock</th>";
 
             //Pasamos los datos de la query a la variable
             $stock = $query->fetch_object();
 
             //Mientras stock tenga información y no esté null, pintas los datos y recoges la siguiente info de la query
+            //Y ponemos un cuadro de texto que actualizará el stock en cuanto se le de a sumbit.
+
             while ($stock != null) {
-                echo "<tr align='center'><td>$stock->tienda</td><td>$stock->unidades</td></tr>";
+                echo "<tr align='center'><td>$stock->tienda</td><td>$stock->unidades</td><td>
+                   <input name='actStock' type='text'></td></tr>";
+
                 $stock = $query->fetch_object();
             }
-
-
 
         }
 
@@ -72,6 +75,8 @@ if ($error != null) echo "Error $error de conexión a la base de datos: $connect
         ?>
 
         </table>
+    <input type="submit">
+    </form>
 </div>
 
 <div id="pie">

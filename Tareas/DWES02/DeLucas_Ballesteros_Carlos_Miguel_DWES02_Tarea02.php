@@ -22,12 +22,15 @@
         //Si el campo teléofno no está vacío asignamos el número del teléfono al nombre.
         // Si no existe ya nombre-telefono se añade y si existe, se reemplazará.
 
+        //Comprobamos que se haya clicado en el botón para que haga esto si no... lo ignora
+        if (isset($_POST['btnForm'])) {
+
         if (!empty($_POST['telefono']))
             $agenda[$_POST['nombre']] = $_POST['telefono'];
         else
             //Si no hay teléfono se borra el nombre del array.
             unset ($agenda[$_POST['nombre']]);
-
+        }
 
         //Si el array no está vacío, se muestran los datos de la agenda en una tabla.
         if(!empty($agenda)){
@@ -49,7 +52,7 @@
 
             <p>Nombre: <input type="text" name="nombre" required/></p>
             <p>Teléfono: <input type="number" name="telefono"/></p>
-            <input type="submit"/>
+            <input type="submit" name="btnForm"/>
 
             <!-- Recorremos el array de la agenda y lo metemos dentro del campo oculto siendo un array de nombre agendacoulta
             para recuperarlo posteeriormente -->
