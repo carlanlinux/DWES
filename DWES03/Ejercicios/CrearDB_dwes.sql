@@ -1,4 +1,3 @@
-use dwes
 
 create table familia
 (
