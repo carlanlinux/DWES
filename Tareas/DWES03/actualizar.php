@@ -9,7 +9,22 @@
 <body>
 
 <div id="encabezado">
-	<h1>Ejercicio: </h1>
+	<h1>Tarea: Edición de un producto </h1>
+        <?php
+            //Si recibimos un código, lo guardamos en la variable 
+            if(isset($_POST[cod])) $codigo = $_POST[cod];
+            
+            //Nos conectamos a la base de datos capturando los posubles erroes
+           try {
+               $dwes = new PDO("mysql:host=localhost; dbname=dwes", "root", "");
+               $error = $dwes->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+               
+           } catch (PDOException $ex) {
+               $error = $ex->getCode();
+               $mensaje = $ex->getMessage();
+           }
+            
+        ?>
 	<form id="form_seleccion" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 	</form>
 </div>
