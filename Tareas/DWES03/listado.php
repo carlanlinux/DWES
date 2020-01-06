@@ -22,6 +22,8 @@
             //Conectamos a la base de datos y contorlamos excepciones
             try {
                  $dwes = new PDO("mysql:host=localhost;dbname=dwes", "root", "");
+                 //Cambiamos la forma de gestionar erroes a excepciones para que
+                 //podamos manejarlas
                  $dwes->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             } catch (PDOException $ex) {
@@ -32,11 +34,16 @@
            
             //Si no hay ningún error comenzamos a pintar los option de los select 
             if (!isset($error)) {
-                //Ponemos la query que necesitamos para que nos devuelv
-                $query = "SELECT cod, nombre FROM familia"; 
-                //Ejecutamos la query
-                $resultado = $dwes->query($query);
-                //Comprobamos que nos haya devuelto datos
+                try {
+                     //Ponemos la query que necesitamos para que nos devuelv
+                     $query = "SELECT cod, nombre FROM familia"; 
+                    //Ejecutamos la query
+                    $resultado = $dwes->query($query);
+                    //Comprobamos que nos haya devuelto datos
+                } catch (PDOException $ex) {
+                     echo "Error número: $error - $mensaje";
+                }
+               
                 if ($resultado) {
                     //Leemos el primer registro devuelto
                     $fila = $resultado->fetchObject();
@@ -75,8 +82,15 @@
             //mostramos los datos. 
             if (!isset($error) && isset($codigo)) {
                 $sql = "SELECT cod, nombre_corto, pvp FROM producto WHERE familia like '$codigo'";
-                //Ejecutamos la query;
-                $resultado = $dwes->query($sql);
+                
+                try {
+                     //Ejecutamos la query;
+                     $resultado = $dwes->query($sql);
+                //Si resultado tiene datos
+                } catch (PDOException $ex) {
+                    echo "Error número: $error - $mensaje";
+                }
+
                 //Si resultado tiene datos
                 if($resultado) {
                     //Leemos el primer registro
@@ -88,7 +102,7 @@
                     //Pintamos un formulario para cada producto con su respectivo botón
                     echo "<form id='formProducto' action='editar.php' method='post'>";
                     //Pintamos el texto con los datos del producto
-                    echo "Producto: <b>" . $fila->nombre_corto . " - " . $fila->pvp . " euros</b>."; 
+                    echo "Producto: <b>" . $fila->nombre_corto . " - " . $fila->pvp . " euros</b> ."; 
                     //Creamos un campo hidden donde guardar la información
                     echo "<input type='hidden' name='cod' value='$fila->cod'/>";
                
