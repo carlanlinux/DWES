@@ -15,17 +15,33 @@
       } else {
                 //Volvemos a escribir la meta correspondiente en la cabecera
                 echo" <meta http-equiv='content-type' content='text/html; charset=UTF-8'>";
-                //Asignamos valores a las variables que vamos a necesitar para actualizar
-                //nuestra base de datos
-                $cod = $_POST['cod'];
-                $nombre_corto = $_POST['nombre_Corto'];
-                $nombre = $_POST['nombre'];
-                $descripcion = $_POST['descripcion'];
-                $pvp = $_POST['pvp'];
 
-                //Conectamos a la base de datos y controlamos excepciones
+                //Creamos un array con los campos que necesitamos de nuestra variable post para la actualización y le
+          // aplicamos los filtros default
+                 $args = array(
+                     'cod' => FILTER_DEFAULT,
+                     'nombre' => FILTER_DEFAULT,
+                     'nombre_Corto'=> FILTER_DEFAULT,
+                     'descripcion' => FILTER_DEFAULT,
+                     'pvp'  => FILTER_DEFAULT
+                 );
+
+                //Creamos una variable donde vamos a guardar los datos que recojamos de POST una vez filtrados
+                //Le asignamos el valor de filtrar el array de post dentro del array que hemos creado anteriormente
+                $datosPost = filter_input_array(INPUT_POST, $args);
+
+                //Asignamos valores a las variables que vamos a necesitar para actualizar nuestra base de datos
+                //Para ello entramos al array que hemos creado donde hemos guardado los valores recibidos por post
+                $cod = $datosPost['cod'];
+                $nombre_corto = $datosPost['nombre_Corto'];
+                $nombre = $datosPost['nombre'];
+                $descripcion = $datosPost['descripcion'];
+                $pvp = $datosPost['pvp'];
+
+
+          //Conectamos a la base de datos y controlamos excepciones
                 try {
-                   $dwes = new PDO("mysql:host=localhost; dbname=dwes", "root", "");
+                   $dwes = new PDO("mysql:host=localhost; dbname=dwes", "root", "root");
                     //Cambiamos la forma de gestionar erroes a excepciones para que
                      //podamos manejarlas
                    $dwes->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

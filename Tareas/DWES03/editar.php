@@ -11,12 +11,13 @@
 <div id="encabezado">
 	<h1>Tarea: Edición de un producto </h1>
         <?php
+            define('ACCESO_COD', 'cod');
             //Si recibimos un código, lo guardamos en la variable 
-            if(isset($_POST[cod])) $codigo = $_POST[cod];
+            if(isset($_POST[ACCESO_COD])) $codigo = $_POST[ACCESO_COD];
             
             //Nos conectamos a la base de datos capturando los posubles erroes
            try {
-               $dwes = new PDO("mysql:host=localhost; dbname=dwes", "root", "");
+               $dwes = new PDO("mysql:host=localhost; dbname=dwes", "root", "root");
                 //Cambiamos la forma de gestionar erroes a excepciones para que
                  //podamos manejarlas
                $error = $dwes->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
