@@ -41,7 +41,7 @@
 
           //Conectamos a la base de datos y controlamos excepciones
                 try {
-                   $dwes = new PDO("mysql:host=localhost; dbname=dwes", "root", "root");
+                   $dwes = new PDO("mysql:host=localhost; dbname=dwes", "dwes", "abc123.");
                     //Cambiamos la forma de gestionar erroes a excepciones para que
                      //podamos manejarlas
                    $dwes->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
