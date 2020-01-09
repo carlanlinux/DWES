@@ -17,7 +17,7 @@
                 echo" <meta http-equiv='content-type' content='text/html; charset=UTF-8'>";
 
                 //Creamos un array con los campos que necesitamos de nuestra variable post para la actualización y le
-          // aplicamos los filtros default
+                // aplicamos los filtros default
                  $args = array(
                      'cod' => FILTER_DEFAULT,
                      'nombre' => FILTER_DEFAULT,

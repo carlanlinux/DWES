@@ -11,8 +11,10 @@
 <div id="encabezado">
 	<h1>Tarea: Edición de un producto </h1>
         <?php
+            //Declaro la constante cod que es el valor que siempre voy a usar para recoger el código de la superglobal POST
             define('ACCESO_COD', 'cod');
-            //Si recibimos un código, lo guardamos en la variable 
+
+            //Si recibimos un código, lo guardamos en la variable
             if(isset($_POST[ACCESO_COD])) $codigo = $_POST[ACCESO_COD];
             
             //Nos conectamos a la base de datos capturando los posubles erroes
