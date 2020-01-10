@@ -9,4 +9,4 @@ CREATE TABLE usuarios (
 
 -- Creamos el usuario dwes
 INSERT INTO usuarios (usuario, contrasena) VALUES
-('dwes', 'e8dc8ccd5e5f9e3a54f07350ce8a2d3d');
+('dwes', ' $2y$10$GcfDfvo5J.tiDWv2vW16hurTj/BkjOTw8rDZOelsx.ci4nXMZ9Rtm');

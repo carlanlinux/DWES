@@ -8,13 +8,25 @@
 <body>
 
 <?php
+    //Conectamos con la base de datos
+    $conexion = new mysqli("localhost","dwes","abc123.","dwes");
+    if (!isset($conexion)) echo "Error al conectar con la base de datos";
+    else {
+        if (!isset($_SERVER['PHP_AUTH_USER'])){
+            header("WWW-Authenticate Basic Realm='Contenido restringido'");
+            header("HTTP/1.0 401 Unauthorized");
+            echo "Usuario no reconocido";
+        } else {
+            $user = $_SERVER['PHP_AUTH_USER'];
+            $check = $conexion->query('SELECT contrasena FROM usuarios where usuario = $user');
+            $user;
+            $psswd;
+            if ($_SERVER['PHP_AUTH_USER'] == $user && password_verify("[$_SERVER[PHP_AUTH_PW]") ){
+                echo "Bienvido al sistema, $user";
+            }
+        }
 
-    $psswd = password_hash("abc123.", PASSWORD_DEFAULT );
-    echo $psswd;
-    echo "<br>";
-    if (password_verify("abc123.",$psswd)) echo "Funciona<br>";
-echo "nombre de usuario: " .  $_SERVER['PHP_AUTH_USER'] . "<br>";
-echo "contraseña: " . $_SERVER['PHP_AUTH_PW'] . "<br>";
+    }
 
 ?> <br>
 </body>
