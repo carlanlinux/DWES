@@ -1,5 +1,4 @@
 <?php
-
 //Si el usuario aún no se ha autentificado
 if(!isset($_SERVER['PHP_AUTH_USER'])){
     header('WWW-Authenticate: Basic realm="Contenido restringido"');
@@ -26,6 +25,13 @@ else {
         header("HTTP/1.0 401 Unauthorized");
         exit;
     }
+    //Si existen los credenciales comprobamos la cookie y la actualizamos
+    else {
+        //Si en el array cookie ya había ultimo login entonces lo guardamos en una variable
+        if(isset($_COOKIE['ultimoLogin'])) $ultimoLogin = $_COOKIE['ultimoLogin'];
+        //Haya o no haya valor en ultimo login actualiamos o creamos la cookie con la hora del ultimo login
+        setcookie("ultimoLogin", time(), time()+3600);
+    }
 
     $resultado->close();
     $dwes->close();
@@ -41,8 +47,21 @@ else {
 </head>
 <body>
 <?php
-    echo "Nombre de usuario: " . $_SERVER[PHP_AUTH_USER] . ".<br>";
-echo "Contraseña: " . $_SERVER[PHP_AUTH_PW] . ".<br>";
+    //Si no ha habido problema al conectar con la BD
+    if ($error == null) {
+        echo "Nombre de usuario: " . $_SERVER['PHP_AUTH_USER'] . ".<br>";
+        echo "Contraseña: " . $_SERVER['PHP_AUTH_PW'] . ".<br>";
+
+        //Comprobamos si existe la variable ultimo login, que se ha creado sólo si el user se ha podido conectar.
+        if (isset($ultimoLogin)) {
+            echo "Último login: " . date("dd/mm/yy \a l/a/s H:i", $ultimoLogin);
+        } else
+            echo "Bienvenido, esta es su primera visita";
+
+    } else {
+        echo "Se ha producido un error";
+    }
+
 
 ?>
  <br>
