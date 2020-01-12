@@ -3,7 +3,7 @@
 session_start();
 
 //Si han pulsado el botón borrar preferencia borramos los datos de la sesión
-if (isset($_POST['BorrarPreferencias'])){
+if (isset($_POST['BorrarPreferencias'])) {
     session_unset();
 }
 
@@ -27,7 +27,8 @@ if (isset($_POST['BorrarPreferencias'])){
             echo "<span class='mensaje'>Información de la sesión eliminada.</span><br>";
         }
         ?>
-        <label>Idioma:
+        <label class="etiqueta">Idioma:</label><br>
+        <label class="texto">
             <?php
             //Si existen las preferencias de la sesión mostramos los datos, en este caso del idioma
             if (isset($_SESSION['preferencias'])) {
@@ -36,7 +37,8 @@ if (isset($_POST['BorrarPreferencias'])){
             }
             ?>
         </label><br>
-        <label>Perfil público:
+        <label class="etiqueta">Perfil público: </label><br>
+        <label class="texto">
             <?php
             //Si existen las preferencias de la sesión mostramos los datos, en este caso del perfilPublico
             if (isset($_SESSION['preferencias'])) {
@@ -44,8 +46,10 @@ if (isset($_POST['BorrarPreferencias'])){
                 echo $perfilPublico;
             }
             ?>
+
         </label><br>
-        <label>Zona horaria:
+        <label class="etiqueta">Zona horaria: </label><br>
+        <label class="texto">
             <?php
             //Si existen las preferencias de la sesión mostramos los datos, en este caso de la zonaHoraria
             if (isset($_SESSION['preferencias'])) {
@@ -53,8 +57,9 @@ if (isset($_POST['BorrarPreferencias'])){
                 echo $zonaHoraria;
             }
             ?>
+
         </label><br>
-            <!-- Ponemos el botón para que borre las preferencias -->
+        <!-- Ponemos el botón para que borre las preferencias -->
         <input type="submit" name="BorrarPreferencias" value="Borrar Preferencias"><br>
         <a href="preferencias.php">Establecer preferencias</a>
     </fieldset>
