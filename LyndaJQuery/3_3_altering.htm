@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Altering Document Content</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script type="text/javascript">
+    $("document").ready(function() {
+
+        // cada uno de los elementos p
+        //$("#example p").wrap("<div style='color:red'/>");
+
+        //Wrapall lo que hace es que coge el padre de todos los elementos y es lo que envuelve en vez de el otro que va uno por uno
+        //$("#example p").wrapAll("<div style='color:red'/>");
+        //borra todos los elementos que tenga por debajo el elemento que se selcciona dejándolo vacío.
+        //$("#example").empty();
+        //Borro los elementos seleccionados. Se pueden poner varios separados por coma
+        //$("#example p.a, #example p.b").remove();
+        //Dtach lo borra temporalemente pero lo mantiene en el documento, se pueden volver a recuperar.
+        //$("#example p.a, #example p.b").detach();
+        //Estos dos reemplazan lo del selector con la cadena que se indica. La única diferencia es que en el replaceAll
+        // el selector se indica al final y en replacewith al principio.
+        //$("<div>replaced</div>").replaceAll("#example p[id]");
+        //con replace with se puede establecer una fallback con contenido dinámico, no sólo estático como con replaceAll.
+        //$("#example p[id]").replaceWith("<div>replaced</div>");
+        $("#example p").replaceWith(replacementFn);
+
+    });
+
+    //Esta función se va a activar con cada uno de los párrafos dentro del div con id example
+    function replacementFn() {
+        //this es el dom element que active la función.
+        //Buscamos que el index sea el uno, y siempre que el index sea diferente de -1 querrá decir que es uno
+    if($(this).text().indexOf("1") != -1) {
+        //Cuando encuentre el primer párrafo lo sustituirá
+        return "<p>This is the paragraph uno</p>";
+    } else {
+        //Con el resto queremos que devuelva el HTML que ya tiene, por eso usamos el outer HTML. Tenemos que poner algo
+        // aquí ya que la función que lo llama es una que va a reemplazar el contenido, si no tiene un else, directamente
+        // lo reemplaza por nada y lo deja vacío.
+        return this.outerHTML;
+    }
+    }
+    </script>
+</head>
+
+<body>
+    <h1>Altering Document Content</h1>
+    <div id="content">
+
+        <p>In addition to creating and inserting content, the ability to alter the current content of a page is a key scenario
+            in Web development. jQuery has functions tailored to specific situations where content needs to be altered:</p>
+        <ul id="list1">
+            <li><code>wrap()</code>: wrap the matched elements with the specified content</li>
+            <li><code>wrapAll()</code>: wrap content around the matched elements as a group</li>
+            <li><code>unWrap()</code>: remove the parents from the matched elements</li>
+            <li><code>empty()</code>: remove all the child elements from the matched elements</li>
+            <li><code>remove()</code>: removes elements from the page, including any embedded data and event handlers</li>
+            <li><code>detach()</code>: removes elements from the page, but maintains embedded data and event handlers</li>
+            <li><code>replaceAll()</code>: replaces the matched elements with the specified content</li>
+            <li><code>replaceWith()</code>: replaces matched elements with content or the results of a callback function</li>
+        </ul>
+        <div id="example">
+            <p class="a">This is paragraph 1</p>
+            <p id="para1">This is paragraph 2</p>
+            <p class="b">This is paragraph 3</p>
+            <p id="para4" lang="en-us">This is paragraph 4</p>
+            <p id="para5" lang="en-gb">This is paragraph 5</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //Enviamos la request
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET","script.php", true);
+    xhr.send();
+
+    //Recibimos la respuesta
+    var text = xhr.responseText;
+    var xml = xhr.responseXML;
+
+    //Una vez lo tenemos podemos pintarlo donde lo necesitemos
+    var target = document.getElementById("main");
+    target.innerText = text;
+</script>
+
+<script type="text/javascript">
+    //Si nos devuelve algo más complejo como un JSON tendremos que parsearlo
+    //Sinos devuelve un XML no hay problema, porque sería simplemente ir navegando por él hasta lo que se necesite
+
+    //Esto sería un objeto JSON
+    var person = {
+        'first_name' : 'bob',
+        'last_name' : 'smith'
+    };
+
+</script>
+
+<script type="text/javascript">
+    //esto sería larespuesta que recibimos. Es un string... por lo que si queremos que sea un JSON lo tenemos que parsear
+    var response = "{
+        'first_name' : 'bob',
+        'last_name' : 'smith'
+    }";
+
+    var person = JSON.parse(response);
+</script>
+
+
+
+</body>
+</html>

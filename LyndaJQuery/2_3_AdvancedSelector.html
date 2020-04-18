@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function() {
+            //Seleccionar hijos inmediatos de un tipo que sean de una etiqueta, ojo solo inmediatos, si hay otra etiqueta
+            // entre medias no lo seleccionaría
+            //$("div > p").css("border", "3px solid red");
+            //Seleccionamos toda clase a que pertenezca a un párrafo y que este esté dentro de un div, no necesariamente
+            // un div en concreto sino todos y da igual que no sean hijos directos
+            //jQuery("div p.a").css("border", "3px solid red");
+            //Selecciona el segundo elemento siempre que venga después del segundo
+            //$("ul + div").css("border", "3px solid red");
+            //Selecciona el segundo, parrafo, siempre que tenga el elemento del principio como su elemento hermano. Esto
+            // funciona en los hermanos que tiene por dehbajo del elemento primero, no en los que puedan cumplir esta condición
+            // pero estén por arriba,
+            $(".a ~ p ").css("border", "3px solid red");
+        });
+    </script>
+</head>
+
+<body>
+    <h1>jQuery Hierarchy Selectors</h1>
+    <div id="content">
+
+        <p>To select elements based on their position in the document tree, use the Hierarchy Selectors.</p>
+        <p>The Hierarchy Selectors work by examining the position of target elements relative to other elements:</p>
+        <ul id="list1">
+            <li><code>$("parent > child")</code>: selects "child" elements that are immediate descendants of the "parent"</li>
+            <li><code>$("ancestor descendant")</code>: selects "descendant" elements as long as they have an "ancestor" element
+                somewhere above them</li>
+            <li><code>$("prev + next")</code>: selects the "next" element if it is immediately preceded by a "prev" element</li>
+            <li><code>$("prev ~ siblings")</code>: selects all "siblings"(hermanos) elements that come after a "prev" element</li>
+        </ul>
+        <div id="example">
+            <p class="a">This is paragraph 1</p>
+            <p id="para1">This is paragraph 2</p>
+            <section>
+                <p class="b">This is paragraph 3</p>
+            </section>
+            <p id="para4" lang="en-us">This is paragraph 4</p>
+            <p id="para5" lang="en-gb">This is paragraph 5</p>
+        </div>
+    </div>
+</body>
+
+</html>

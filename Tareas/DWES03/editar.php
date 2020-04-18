@@ -60,7 +60,7 @@
             . "rows='10' cols='55'>$producto->descripcion</textarea><br>";
             //echo "<label>Nombre: </label><br><input type='text' name='nombre' value='$producto->nombre' size='auto'/><br>";
             //echo "<label>Descripción: </label><br><input type='text' name='descripcion' value='$producto->descripcion' size='auto'/><br>";
-            echo "<label>PVP: </label><input type='number' name='pvp' name='pvp' value='$producto->pvp' size='4'/><br><br>";
+            echo "<label>PVP: </label><input type='number' name='pvp' name='pvp' value='$producto->PVP' size='4'/><br><br>";
             //Pintmos los botones
             echo "<input type='submit' name='btn_actualizar' value='Actualizar'/>";
             echo "<input type='submit' name='btn_cancelar' value='Cancelar'/>";

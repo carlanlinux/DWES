@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //Enviamos la request
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "script.php",true);
+    xhr.send();
+
+    //Recogemos los datos partiendo de el objeto json del punto anterior.
+    var json = JSON.parse(xhr.responseText);
+    var target = document.getElementById("main");
+    target.innerHTML = json.last_name;
+
+</script>
+
+
+
+
+
+</body>
+</html>

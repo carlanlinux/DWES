@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery and AJAX</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function() {
+            //Hacemos que cada botón cuando se clique llame a funciones diferentes.
+            $("#getcontent").click(getContent);
+            $("#loadhtml").click(loadHTML);
+        });
+        
+        function getContent() {
+            //Usamos el objeto jquerry y llamaos a la función global AJAX. Tiene varios argumentos
+            //Content - que es el fichero de donde va a coger el contenido
+            //success: setContent --> Cuando funcione llamará a la función set content
+            //Tye: HTTP type de la request (GET o POsT)
+            //Data type: tipo de texto.
+            $.ajax("sampletextcontent.txt", 
+                   { success: setContent, 
+                     type: "GET", 
+                     dataType: "text" });
+        }
+            //Data --> es el dato real que recibimos de la URL que hemos hecho la petición en la llamada Ajax
+            //jqxhr --> se puede usar de forma nativa el xmlhttprequest del navegador o la función de jquery para llamar
+            // ajax. Aquí lo que hacemos es llamar para tener una referencia del exmaple div y recuperar el texto de los datos.
+
+        function setContent(data, status, jqxhr) {
+            $("#example").text(data);
+        }
+
+            //Aquí lo que hace es coger una llamada a la URL de la que queremos sacar los datos usando el método load y
+            //conseguir que nos cargue el HTML.
+        function loadHTML() {
+            $("#example").load("samplehtml.html");
+        }
+    </script>
+</head>
+
+<body>
+    <h1>AJAX and jQuery</h1>
+    <div id="content">
+        <p>One of jQuery's great strengths is how it simplifies working with AJAX. jQuery provides high-level wrapper functions
+            for retrieving data, working with different data types, handling errors, and monitoring the AJAX request process.</p>
+        <ul>
+            <li><code>ajax()</code>: used to perform generic AJAX requests</li>
+            <li><code>load()</code>: loads AJAX content directly into a page element</li>
+        </ul>
+        <div id="example">
+        </div>
+        <button id="getcontent">Get Text</button>
+        <button id="loadhtml">Load HTML</button>
+    </div>
+</body>
+
+</html>

@@ -81,7 +81,7 @@
             //Si no hay errores y se recibieron correctamente los productos
             //mostramos los datos. 
             if (!isset($error) && isset($codigo)) {
-                $sql = "SELECT cod, nombre_corto, pvp FROM producto WHERE familia like '$codigo'";
+                $sql = "SELECT cod, nombre_corto, PVP FROM producto WHERE familia like '$codigo'";
                 
                 try {
                      //Ejecutamos la query;

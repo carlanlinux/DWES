@@ -52,7 +52,7 @@
                     $mensaje = $ex->getMessage();
                 }
                 try {
-                    $query = ("UPDATE producto SET nombre = '$nombre', nombre_corto ='$nombre_corto', descripcion='$descripcion', pvp='$pvp' WHERE cod like '$cod'");
+                    $query = ("UPDATE producto SET nombre = '$nombre', nombre_corto ='$nombre_corto', descripcion='$descripcion', PVP='$pvp' WHERE cod like '$cod'");
                     $registros = $dwes->exec($query);
                 } catch (PDOException $ex) {
                     echo "Error número: $error - $mensaje";

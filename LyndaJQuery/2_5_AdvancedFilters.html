@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Using Child, Visibility, and Content Filters</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function() {
+            //Selecciona si el elemento contiene el texto que se le indica entre paréntesis.
+                //$("p:contains('3')").css("border", "3px solid red");
+            //Selecciona todos los elementos que tienen al menos un nodo hijo (ya sea elemento o texto)
+                //$("p:parent").css("border", "3px solid red");
+            //Seleccionamos un elemento, que contenga al menos otro elemento que cuadre con el selector que se indica
+                //$("div:has(p[class=a])").css("border", "3px solid red");
+            //Seleccionamos los div que tienen p y son los primeros hios de ese div, es decir los p que aparezcan justo
+            // debajo de cada div
+                //$("div p:first-child").css("border", "3px solid red");
+            //Aquí va a seleccionar de los p dentro de los div, aquellos que sean el último p de cada div
+                //$("div p:last-of-type").css("border","3px solid red");
+            //Aquí seleccionamos el que que dentro del primer elemento, div, sea su n hijo. Ojo, es lista de índice 1 no 0
+                //$("div p:nth-child(3)").css("border","3px solid red");
+            //Aquí marcas cada cuántos tiene que seleccionar: 1 no lo selecciona, el 2 sí, tercero no, cuarto sí... Que
+            // te marque cada n hijos
+            $("div p:nth-child(2n)").css("border","3px solid red");
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Using Child, Visibility, and Content Filters</h1>
+    <div id="content">
+        <p>These selectors are used to retrieve content that matches certain conditions, such as whether they contain certain
+            content, whether they are visible/hidden, or whether they are in a certain position within their parent.</p>
+        <ul id="list1">
+            <li class="a"><code>:contains('<i>text</i>')</code>: select elements that contain specific text</li>
+            <li class="a"><code>:parent</code>: select elements have at least one child node (element or text)</li>
+            <li class="a"><code>:has(<i>selector</i>)</code>: select elements that contain at least one element that matches the selector</li>
+            <li class="a"><code>:first-child</code>: select elements that are the first child of their parents</li>
+            <li class="a"><code>:last-of-type</code>: select elements that are the last of their type among siblings</li>
+            <li class="a"><code>:nth-child()</code>: select elements that are the nth child of their parent</li>
+        </ul>
+        <div id="example">
+            <p class="a">This is paragraph 1</p>
+            <p id="para1">This is paragraph 2</p>
+            <p class="b">This is paragraph 3</p>
+            <p id="para4" lang="en-us">This is paragraph 4</p>
+            <p id="para5" lang="en-gb">This is paragraph 5</p>
+        </div>
+    </div>
+</body>
+
+</html>

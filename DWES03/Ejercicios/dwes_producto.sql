@@ -1,5 +1,5 @@
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('3DSNG', null, 'Nintendo 3DS negro', 'Consola port?til de Nintendo que permitir? disfrutar de efectos 3D sin necesidad de gafas especiales, e incluir? retrocompatibilidad con el software de DS y de DSi.', 270.00, 'CONSOL');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('ACERAX3950', null, 'Acer AX3950 I5-650 4GB 1TB W7HP', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('3DSNG', null, 'Nintendo 3DS negro', 'Consola port?til de Nintendo que permitir? disfrutar de efectos 3D sin necesidad de gafas especiales, e incluir? retrocompatibilidad con el software de DS y de DSi.', 270.00, 'CONSOL');
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('ACERAX3950', null, 'Acer AX3950 I5-650 4GB 1TB W7HP', 'Caracter?sticas:
 
 Sistema Operativo : Windows? 7 Home Premium Original
 
@@ -40,7 +40,7 @@ RPM de Disco Duro: 5400
 Tipo de Unidad ?ptica: Grabadora DVD
 Compatibilidad de Dispositivo ?ptico: DVD-RAM/?R/?RW
 Compatibilidad de Medios de Doble Capa: S', 410.00, 'ORDENA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('ARCLPMP32GBN', null, 'Archos Clipper MP3 2GB negro', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('ARCLPMP32GBN', null, 'Archos Clipper MP3 2GB negro', 'Caracter?sticas:
 
 Almacenamiento Interno Disponible en 2 GB*
 Compatibilidad Windows o Mac y Linux (con soporte para almacenamiento masivo)
@@ -48,7 +48,7 @@ Interfaz para ordenador USB 2.0 de alta velocidad
 Batter?a2 11 horas m?sica
 Reproducci?n M?sica3 MP3
 Medidas Dimensiones: 52mm x 27mm x 12mm, Peso: 14 Gr', 26.70, 'MP3');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('BRAVIA2BX400', null, 'Sony Bravia 32IN FULLHD KDL-32BX400', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('BRAVIA2BX400', null, 'Sony Bravia 32IN FULLHD KDL-32BX400', 'Caracter?sticas:
 
 Full HD: Vea deportes pel?culas y juegos con magn?ficos detalles en alta resoluci?n gracias a la resoluci?n 1920x1080.
 
@@ -67,7 +67,7 @@ BRAVIA ENGINE 2: experimente colores y detalles de imagen incre?blemente n?tidos
 Live Colour?: seleccione entre cuatro modos: desactivado, bajo, medio y alto, para ajustar el color y obtener im?genes vivas y una calidad ?ptima. 
 
 24p True Cinema?: reproduzca una aut?ntica experiencia cinem?tica y disfrute de pel?culas exactamente como el director las concibi? a 24 fotogramas por segundo.', 356.90, 'TV');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('EEEPC1005PXD', null, 'Asus EEEPC 1005PXD N455 1 250 BL', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('EEEPC1005PXD', null, 'Asus EEEPC 1005PXD N455 1 250 BL', 'Caracter?sticas:
 Procesador: 1660 MHz, N455, Intel Atom, 0.5 MB. 
 Memoria: 1024 MB, 2 GB, DDR3, SO-DIMM, 1 x 1024 MB. 
 Accionamiento de disco: 2.5 ", 250 GB, 5400 RPM, 
@@ -82,7 +82,7 @@ Sistema operativo/software: Windows 7 Starter.
 Color: Blanco. 
 Contro de energ?a: 8 MB/s, Litio-Ion, 6 piezas, 2200 mAh, 48 W. 
 Peso y dimensiones: 1270 g, 178 mm, 262 mm, 25.9 mm, 36.5 mm', 245.40, 'NETBOK');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('HPMIN1103120', null, 'HP Mini 110-3120 10.1LED N455 1GB 250GB W7S negro', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('HPMIN1103120', null, 'HP Mini 110-3120 10.1LED N455 1GB 250GB W7S negro', 'Caracter?sticas:
 Sistema operativo instalado 
 Windows? 7 Starter original 32 bits 
 
@@ -108,14 +108,14 @@ Pantalla WSVGA LED HP Antirreflejos de 25,6 cm (10,1") en diagonal
 
 Resoluci?n de la pantalla 
 1024 x 600 ', 270.00, 'NETBOK');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('IXUS115HSAZ', null, 'Canon Ixus 115HS azul', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('IXUS115HSAZ', null, 'Canon Ixus 115HS azul', 'Caracter?sticas:
 HS System (12,1 MP) 
 Zoom 4x, 28 mm. IS ?ptico 
 Cuerpo met?lico estilizado 
 Pantalla LCD PureColor II G de 7,6 cm (3,0") 
 Full HD. IS Din?mico. HDMI 
 Modo Smart Auto (32 escenas) ', 196.70, 'CAMARA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('KSTDT101G2', null, 'Kingston DataTraveler 16GB DT101G2 USB2.0 negro', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('KSTDT101G2', null, 'Kingston DataTraveler 16GB DT101G2 USB2.0 negro', 'Caracter?sticas:
 Capacidades ? 16GB
 Dimensiones ? 2.19" x 0.68" x 0.36" (55.65mm x 17.3mm x 9.05mm)
 Temperatura de Operaci?n ? 0? hasta 60? C / 32? hasta 140? F
@@ -123,7 +123,7 @@ Temperatura de Almacenamiento ? -20? hasta 85? C / -4? hasta 185? F
 Simple ? Solo debe conectarlo a un puerto USB y est? listo para ser utilizado
 Practico ? Su dise?o sin tapa giratorio, protege el conector USB; sin tapa que perder
 Garantizado ? Cinco a?os de garant', 19.20, 'MEMFLA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('KSTDTG332GBR', null, 'Kingston DataTraveler G3 32GB rojo', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('KSTDTG332GBR', null, 'Kingston DataTraveler G3 32GB rojo', 'Caracter?sticas:
 
 Tipo de producto Unidad flash USB
 Capacidad almacenamiento32GB
@@ -133,13 +133,13 @@ Altura 9.0 mm
 Peso 12 g
 Color incluido RED
 Tipo de interfaz USB', 40.00, 'MEMFLA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('KSTMSDHC8GB', null, 'Kingston MicroSDHC 8GB', 'Kingston tarjeta de memoria flash 8 GB microSDHC
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('KSTMSDHC8GB', null, 'Kingston MicroSDHC 8GB', 'Kingston tarjeta de memoria flash 8 GB microSDHC
 ?ndice de velocidad    Class 4
 Capacidad almacenamiento    8 GB
 Factor de forma  MicroSDHC
 Adaptador de memoria incluido   Adaptador microSDHC a SD
 Garant?a del fabricante   Garant?a limitada de por vida', 10.20, 'MEMFLA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('LEGRIAFS306', null, 'Canon Legria FS306 plata', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('LEGRIAFS306', null, 'Canon Legria FS306 plata', 'Caracter?sticas:
 
 Grabaci?n en tarjeta de memoria SD/SDHC 
 La c?mara de v?deo digital de Canon m?s peque?a nunca vista 
@@ -155,7 +155,7 @@ SISTEMA DE V?DEO
 Soporte de grabaci?n: Tarjeta de memoria extra?ble (SD/SDHC)
 Tiempo m?ximo de grabaci?n: Variable, dependiendo del tama?o de la tarjeta de memoria.
 Tarjeta SDHC de 32 GB: 20 horas 50 minutos', 175.00, 'VIDEOC');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('LGM237WDP', null, 'LG TDT HD 23 M237WDP-PC FULL HD', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('LGM237WDP', null, 'LG TDT HD 23 M237WDP-PC FULL HD', 'Caracter?sticas:
 
 General
 Tama?o (pulgadas): 23
@@ -182,7 +182,7 @@ USB Servicio: S?
 RS-232C Servicio: S?
 PCMCIA: S?
 Salida ?ptico: S', 186.00, 'TV');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('LJPROP1102W', null, 'HP Laserjet Pro Wifi P1102W', 'Impesora laserjet P1102W es facil de instalar y usar, ademas de que te ayudara a ahorrar energia y recursos. 
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('LJPROP1102W', null, 'HP Laserjet Pro Wifi P1102W', 'Impesora laserjet P1102W es facil de instalar y usar, ademas de que te ayudara a ahorrar energia y recursos.
 Olviadte de los cables y disfura de la libertad que te proporcina su tecnologia WIFI, imprime facilmente desdes cualquier de tu oficina. 
 
 Formato m?ximo aceptado A4 A2 No
@@ -190,11 +190,11 @@ A3 NoA4 Si
 A5 SiA6 Si
 B5 SiB6 Si
 Sobres C5 (162 x 229 mm) SiSobres C6 (114 x 162 mm) Si', 99.90, 'IMPRES');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('OPTIOLS1100', null, 'Pentax Optio LS1100', 'La LS1100 con funda de transporte y tarjeta de memoria de 2GB incluidas 
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('OPTIOLS1100', null, 'Pentax Optio LS1100', 'La LS1100 con funda de transporte y tarjeta de memoria de 2GB incluidas
 es la compacta digital que te llevar?s a todas partes. 
 Esta c?mara dise?ada por Pentax incorpora un sensor CCD de 14,1 megap?xeles y un objetivo gran angular de 28 mm.
 ', 104.80, 'CAMARA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('PAPYRE62GB', null, 'Lector ebooks Papyre6 con SD2GB + 500 ebooks', 'Marca Papyre 
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('PAPYRE62GB', null, 'Lector ebooks Papyre6 con SD2GB + 500 ebooks', 'Marca Papyre
 Modelo Papyre 6.1 
 Uso Lector de libros electr?nicos 
 Tecnolog?a e-ink (tinta electr?nica, Vizplez) 
@@ -203,7 +203,7 @@ Memoria - Interna: 512MB
 - Externa: SD/SDHC (hasta 32GB) 
 Formatos PDF, RTF, TXT, DOC, HTML, MP3, CHM, ZIP, FB2, Formatos de imagen 
 Pantalla 6" (600x800px), blanco y negro, 4 niveles de grises ', 205.50, 'EBOOK');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('PBELLI810323', null, 'Packard Bell I8103 23 I3-550 4G 640GB NVIDIAG210', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('PBELLI810323', null, 'Packard Bell I8103 23 I3-550 4G 640GB NVIDIAG210', 'Caracter?sticas:
 
 CPU CHIPSET
 
@@ -254,7 +254,7 @@ Esata: 1
 
 SISTEMA OPERATIVO
 O.S: Microsoft Windows 7 Premium', 761.80, 'ORDENA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('PIXMAIP4850', null, 'Canon Pixma IP4850', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('PIXMAIP4850', null, 'Canon Pixma IP4850', 'Caracter?sticas:
 
 Tipo: chorro de tinta cartuchos independientes
 Conexi?n: Hi-Speed USB
@@ -264,7 +264,7 @@ Velocidad impresi?n: 11 ipm (negro) / 9.3 ipm (color)
 Tama?o m?ximo papel: A4
 Bandeja entrada: 150 hojas
 Dimensiones: 43.1 cm x 29.7 cm x 15.3 cm', 97.30, 'IMPRES');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('PIXMAMP252', null, 'Canon Pixma MP252', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('PIXMAMP252', null, 'Canon Pixma MP252', 'Caracter?sticas:
 
 Funciones: Impresora, Esc?ner , Copiadora
 Conexi?n: USB 2.0
@@ -287,17 +287,17 @@ Area m?xima de escaneado: A4
 
 COPIA
 Tiempo salida 1? copia: aprox 39 seg.', 41.60, 'MULTIF');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('PS3320GB', null, 'PS3 con disco duro de 320GB', 'Este Pack Incluye:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('PS3320GB', null, 'PS3 con disco duro de 320GB', 'Este Pack Incluye:
 - La consola Playstation 3 Slim Negra 320GB
 - El juego Killzone 3
 ', 380.00, 'CONSOL');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('PWSHTA3100PT', null, 'Canon Powershot A3100 plata', 'La c?mara PowerShot A3100 IS, inteligente y compacta, presenta la calidad de imagen de Canon en un cuerpo
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('PWSHTA3100PT', null, 'Canon Powershot A3100 plata', 'La c?mara PowerShot A3100 IS, inteligente y compacta, presenta la calidad de imagen de Canon en un cuerpo
 compacto y ligero para capturar fotograf?as sin esfuerzo; es tan f?cil como apuntar y disparar.
 Caracter?sticas:
 12,1 MP 
 Zoom ?ptico 4x con IS 
 Pantalla LCD de 6,7 cm (2,7") ', 101.40, 'CAMARA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('SMSGCLX3175', null, 'Samsung CLX3175', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('SMSGCLX3175', null, 'Samsung CLX3175', 'Caracter?sticas:
 
 Funci?n: Impresi?n color, copiadora, esc?ner
 Impresi?n 
@@ -326,7 +326,7 @@ M?todoEsc?ner plano color
 Resoluci?n (?ptica)1200 x 1200 dpi
 Resoluci?n (Mejorada)4800 x 4800 dpi
 Escaneado a Escanear a USB / Carpeta', 190.00, 'MULTIF');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('SMSN150101LD', null, 'Samsung N150 10.1LED N450 1GB 250GB BAT6 BT W7 R', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('SMSN150101LD', null, 'Samsung N150 10.1LED N450 1GB 250GB BAT6 BT W7 R', 'Caracter?sticas:
 
 Sistema Operativo Genuine Windows? 7 Starter 
 
@@ -377,7 +377,7 @@ Bloqueo Kensington Lock Port
 Bater?a 
 Adaptador 40 Watt Bater?a 
 6 Cell Dimensiones ', 260.60, 'NETBOK');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('SMSSMXC200PB', null, 'Samsung SMX-C200PB EDC ZOOM 10X', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('SMSSMXC200PB', null, 'Samsung SMX-C200PB EDC ZOOM 10X', 'Caracter?sticas:
 
 Sensor de Imagen Tipo 1 / 6? 800K pixel CCD
 
@@ -386,7 +386,7 @@ Lente Zoom ?ptico 10 x optico
 Caracter?sticas Grabaci?n V?deo Estabilizador de Imagen Hiper estabilizador de imagen digital
 
 Interfaz Tarjeta de Memoria Ranura de Tarjeta SDHC / SD', 127.20, 'VIDEOC');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('STYLUSSX515W', null, 'Epson Stylus SX515W', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('STYLUSSX515W', null, 'Epson Stylus SX515W', 'Caracter?sticas:
 
 Resoluci?n m?xima5760 x 1440 DPI
 Velocidad de la impresi?n
@@ -405,7 +405,7 @@ Tipo de digitalizaci?n Esc?ner plano
 Escanaer integrado: si
 Tecnolog?a de exploraci?n CIS
 WLAN, conexi?n: si', 77.50, 'MULTIF');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('TSSD16GBC10J', null, 'Toshiba SD16GB Class10 Jewel Case', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('TSSD16GBC10J', null, 'Toshiba SD16GB Class10 Jewel Case', 'Caracter?sticas:
 
 Densidad: 16 GB
 PINs de conexi?n: 9 pins
@@ -416,7 +416,7 @@ Dimensiones: 32.0 mm (L) ? 24.0 mm (W) ? 2.1 mm (H)
 Peso: 2g
 Temperatura: -25?C a +85?C (Recomendada)
 Humedad: 30% to 80% RH (sin condensaci', 32.60, 'MEMFLA');
-INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, pvp, familia) VALUES ('ZENMP48GB300', null, 'Creative Zen MP4 8GB Style 300', 'Caracter?sticas:
+INSERT INTO dwes.producto (cod, nombre, nombre_corto, descripcion, PVP, familia) VALUES ('ZENMP48GB300', null, 'Creative Zen MP4 8GB Style 300', 'Caracter?sticas:
 
 8 GB de capacidad
 Autonom?a: 32 horas con archivos MP3 a 128 kbps

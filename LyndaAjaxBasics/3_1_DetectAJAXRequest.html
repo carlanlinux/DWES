@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ajax Zip Code</title>
+    <style>
+        #entry {
+            margin: 2em 1em;
+        }
+        #location {
+            margin: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<div id="entry">
+    Zip code: <input id="zipcode" type="text" name="zipcode" />
+    <button id="ajax-button" type="button">Submit</button>
+</div>
+
+<div id="location">
+</div>
+
+<script>
+    //Crear la instancia del objeto XMLHttpRequest para GET
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET","process.php",true);
+    //Uso el método para añadir una cabecera a la petición HTTP con ese valor estándar que identifica a Ajax.
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.send();
+</script>
+
+</body>
+</html>
