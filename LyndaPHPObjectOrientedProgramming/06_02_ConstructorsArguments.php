@@ -6,8 +6,8 @@ class SofaM {
 
   public function __Construct($args=[]){
       self::$instance_count++;
-      $this->seats = $args['seats'] ?? NULL;
-      $this->arms = $args['arms'] ?? NULL;
+      $this->seats = $args['seats'] ?? $this->seats;
+      $this->arms = $args['arms'] ?? $this->arms;
   }
 
   public $seats = 3;
@@ -23,19 +23,19 @@ class Loveseat extends SofaM {
   var $seats = 2;
 }
 
-$sofa = new SofaM(3,2);
+$sofa = new SofaM(['seats' => 3, 'arms' => 2]);
 echo 'Sofa<br />';
 echo '- seats: ' . $sofa->seats . '<br />';
 echo '- arms: ' . $sofa->arms . '<br />';
 echo '<br />';
 
-$couch = new Couch(3,1);
+$couch = new Couch(['seats' => 4]);
 echo 'Couch<br />';
 echo '- seats: ' . $couch->seats . '<br />';
 echo '- arms: ' . $couch->arms . '<br />';
 echo '<br />';
 
-$loveseat = new Loveseat(2,2);
+$loveseat = new Loveseat(['arms' => 0]);
 echo 'Loveseat<br />';
 echo '- seats: ' . $loveseat->seats . '<br />';
 echo '- arms: ' . $loveseat->arms . '<br />';
