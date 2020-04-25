@@ -1,9 +1,23 @@
 <?php
 
 
-class BicycleP
+class BicycleP extends DatabaseObject
 {
-    // ------- START OF ACTIVE RECORD CODE --------
+    //Creamos el objeto dabase que sólo lo van a necesitar los objetos instanciados de la clase, por lo que lo ponemos protected
+    static protected $table_name = 'bicycles';
+    //Creamos la lista de las columnas de la base de datos para poderlo reutilizar a lo largo del código
+    static protected $db_columns = [
+        'brand',
+        'model',
+        'year',
+        'category',
+        'color',
+        'gender',
+        'price',
+        'weight_kg',
+        'condition_id',
+        'description'
+    ];
 
     //Crearmos una propiedad estática para que todas las instancias puedan acceder a la conexión de la base de datos.
     public const CATEGORIES = ['road', 'mountain', 'hybrid', 'crusier', 'city', 'BMX'];
@@ -16,7 +30,7 @@ class BicycleP
     // la query. Este tipo de métodos se tendrán que ir creando para cada una de los tipos de query. La idea es tener
     // todo lo relacionado con base de datos aquí en la clase objeto.
     public const LBSCHANGERATE = 2.2046226218;
-    protected const CONDITIONOPTIONS = [
+    public const CONDITION_OPTIONS = [
         1 => 'Beat up',
         2 => 'Decent',
         3 => 'Good',
@@ -25,7 +39,6 @@ class BicycleP
 
     //Buscamos en la base de datos y esperamos que nos deuvelva todos los objetos de la tabla en un array de objetos
     // llamando al método find_sql y pasando la query como argumento.
-    static protected $database;
 
     //Buscamos en la base de datos por id y esperamos que nos devuelva un único objeto.
     public $id;
@@ -43,6 +56,7 @@ class BicycleP
     public $price;
     protected $weight_kg;
     protected $condition_id;
+
 
     public function __construct ($args = [])
     {
@@ -64,72 +78,25 @@ class BicycleP
 
     }
 
-    public static function set_database ($database)
-    {
-        self::$database = $database;
+    //Estos son métodos estáticos porque aún no tenemos la instancia (el objeto) creado y queremos acceder a ellos.
 
+    //Función para devolver el nombre del producto con marca, modelo y año
+    public function name ()
+    {
+        return "{$this->brand} {$this->model} {$this->year}";
     }
 
-    public static function find_all ()
+    protected function validate ()
     {
-        $sql = "SELECT * FROM bicycles";
-        return self::find_sql($sql);
-    }
+        $this->errors = [];
 
-    public static function find_sql ($sql)
-    {
-        $result = self::$database->query($sql);
-        //Comprobamos que no haya errores viendo si resultado tiene algún valor
-        if (!$result) exit("Database query failed");
-        //Antes de devolver los resultados lo que tenemos que hacer es convertir los resultados en objetos. No queremos
-        // los resultados sino los objetos, un array de objetos
-        $object_array = [];
-        //Mientras que haya filas por sacar, las metes en un array asociativo.
-        while ($record = $result->fetch_assoc()) {
-            //Llamamos al método para crear el objeto pasándole los datos de la fila que se obtiene en cada bucle y nos devuelve
-            //el objeto ya instanciado que se incluye en el array de objetos.
-            $object_array[] = self::instantiate($record);
+        if (is_blank($this->brand)) {
+            $this->errors[] = "Brand cannot be blank.";
         }
-        return $object_array;
-
-        //Liberamos los datos del fectch.
-        $record->free();
-    }
-
-    protected static function instantiate ($records)
-    {
-        //Instanciamos un objeto de la propia clase
-        $object = new self();
-        //Could manually assign values and propierties
-        //But automatic assignment se puede hacer fácil y reusable. Con un for each nos recorremos el array asociativo
-        // como propiedad y valor entonces si la propiedad existe
-        foreach ($records as $property => $value) {
-            //Si en el objeto (param1) existe la propiedad (param2) entonces le das el valor de value a la propiedad del objeto.
-            if (property_exists($object, $property)) $object->$property = $value;
+        if (is_blank($this->model)) {
+            $this->errors[] = "Model cannot be blank.";
         }
-        //Devolvemos el objeto
-        return $object;
-    }
-
-    //Creamos el constructor y ponemos como parámetro un arary de argumentos
-
-    public static function find_by_id ($id)
-    {
-        //Dividimos la query en dos partes para poder meter el id entre comillas simples y aplicando primero el método
-        //escape_string para evitar sql injections y convertir el id en string de forma segura.
-        $sql = "SELECT * FROM bicycles ";
-        $sql .= "WHERE id='" . self::$database->escape_string($id) . "'";
-        //como en el anterior nos devovlerá un array de objetos sólo que como en la SQL filtramos por uno, ese array
-        // contendrá un único objeto
-        $obj_array = self::find_sql($sql);
-        //Si al array no está vacío queremos devolver sólo el array que se encuentra en la primera posición, eso lo
-        // hacemos usando el método array_shift.
-        if (!empty($obj_array)) {
-            return array_shift($obj_array);
-            //si no lo encuentra, devolvemos falso.
-        } else {
-            return false;
-        }
+        return $this->errors;
     }
 
     /**
@@ -165,7 +132,7 @@ class BicycleP
         if ($this->condition_id > 0) {
             //devolvemos el valor del array asociativo conditionnoptions, que tenga la clave que tenemos guardada en el
             // atributo condition_id
-            return self::CONDITIONOPTIONS[$this->condition_id];
+            return self::CONDITION_OPTIONS[$this->condition_id];
         } else {
             return "Unknown";
         }

@@ -23,7 +23,7 @@ function confirm_db_connect ($connection)
     }
 }
 
-function fb_disconnect ($connection)
+function db_disconnect ($connection)
 {
     if (isset($connection)) $connection->close();
 }

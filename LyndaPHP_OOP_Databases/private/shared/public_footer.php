@@ -20,5 +20,5 @@
 </html>
 
 <?php
-fb_disconnect($database);
+db_disconnect($database);
 ?>

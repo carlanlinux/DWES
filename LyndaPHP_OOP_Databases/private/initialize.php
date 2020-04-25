@@ -26,8 +26,11 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
 define("WWW_ROOT", $doc_root);
 
 require_once('functions.php');
+require_once('status_error_functions.php');
 require_once('db_credentials.php');
 require_once('database_functions.php');
+require_once('validation_functions.php');
+
 
 // Load class definitions manually usando requieres por cada fichero
 
@@ -39,13 +42,18 @@ foreach (glob('classes/*.class.php') as $fileClass) {
 }
   */
 
+// -> All classes in directory
+foreach (glob('classes/*.class.php') as $file) {
+    require_once($file);
+}
+
 
 // Autoload class definitions
 function my_autoload ($class)
 {
     if (preg_match("/\A\w+\Z/", $class)) {
         //Ponemos el include de la localización
-        include '../private/classes/' . $class . ".class.php";
+        include('classes/' . $class . '.class.php');
     }
 }
 
@@ -56,7 +64,7 @@ spl_autoload_register('my_autoload');
 $database = db_connect();
 
 //Le pasamos a la clase el objeto devuelto de la conexión de la base de datos.
-BicycleP::set_database($database);
+DatabaseObject::set_database($database);
 
 
 ?>
