@@ -9,6 +9,9 @@
         <ul>
             <li><a href="<?php echo url_for('/staff/bicycles/index.php'); ?>">Bicycles</a></li>
         </ul>
+        <ul>
+            <li><a href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a></li>
+        </ul>
     </div>
 
 </div>

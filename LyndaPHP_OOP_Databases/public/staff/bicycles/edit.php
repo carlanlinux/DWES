@@ -2,6 +2,8 @@
 
 require_once('../../../private/initialize.php');
 
+require_login();
+
 //Si no hay por get un ID en la URL lo devolvemos al index
 if (!isset($_GET['id'])) {
     redirect_to(url_for('/staff/bicycles/index.php'));
@@ -37,9 +39,9 @@ if (is_post_request()) {
     //Llamamos al método para que con estos valores que tiene ahora mi objeto actualice la base de datos.
     $result = $bicycle->save();
 
-
+    //Guardamos los mensajes en la sesión para mostrarlos posteriormente con la funciones del fichero status_functions
     if ($result === true) {
-        $_SESSION['message'] = 'The bicycle was updated successfully.';
+        $session->message('The bicycle was updated successfully.');
         redirect_to(url_for('/staff/bicycles/show.php?id=' . $id));
     } else {
         // show errors

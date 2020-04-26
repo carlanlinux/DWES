@@ -3,7 +3,7 @@
 ninguna salida desde el script (aparte de cabeceras); en su lugar la salida se almacenará en un búfer interno. */
 ob_start(); // turn on output buffering
 
-// session_start(); // turn on sessions if needed
+
 
 // Assign file paths to PHP constants
 // __FILE__ returns the current path to this file
@@ -66,5 +66,7 @@ $database = db_connect();
 //Le pasamos a la clase el objeto devuelto de la conexión de la base de datos.
 DatabaseObject::set_database($database);
 
+//Iniciamos una nueva sesión instanciando la clase sesión
+$session = new Session;
 
 ?>

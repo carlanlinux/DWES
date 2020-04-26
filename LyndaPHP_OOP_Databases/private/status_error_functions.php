@@ -1,5 +1,16 @@
 <?php
 
+//Si no estoy logado que nos redireccione a la página index, tendremos que llamar a esta función en todas las páginas
+// que sean de acceso resitringido a usuarios. Si lo ponemos en inicializar aplicaria a todos, por lo que hay que hacerlo uno por uno.
+function require_login ()
+{
+    //Como el objeto sesión está fuera del ámbito de este fichero, utilizamos global para hacerlo global y poder acceder.
+    global $session;
+    if (!$session->is_logged_in()) {
+        redirect_to(url_for('/staff/login.php'));
+    }
+}
+
 function display_errors ($errors = array())
 {
     $output = '';
@@ -16,19 +27,17 @@ function display_errors ($errors = array())
     return $output;
 }
 
-function get_and_clear_session_message ()
-{
-    if (isset($_SESSION['message']) && $_SESSION['message'] != '') {
-        $msg = $_SESSION['message'];
-        unset($_SESSION['message']);
-        return $msg;
-    }
-}
 
+//Muestra mensajes de sesión
 function display_session_message ()
 {
-    $msg = get_and_clear_session_message();
+    //Tenemos que llamar a global para poder acceder al objeto de la sesión
+    global $session;
+    //Nos guardamos el mensaje en una variable
+    $msg = $session->message();
     if (isset($msg) && $msg != '') {
+        //Borramos el mensaje
+        $session->clear_message();
         return '<div id="message">' . h($msg) . '</div>';
     }
 }

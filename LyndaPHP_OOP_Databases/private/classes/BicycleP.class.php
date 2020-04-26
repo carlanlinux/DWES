@@ -3,7 +3,8 @@
 
 class BicycleP extends DatabaseObject
 {
-    //Creamos el objeto dabase que sólo lo van a necesitar los objetos instanciados de la clase, por lo que lo ponemos protected
+    //Creamos la propiedad tabla la clase bicis, que es la de la bd, por lo que lo ponemos protected y estática, ya que
+    // es compartida por todas las instancias
     static protected $table_name = 'bicycles';
     //Creamos la lista de las columnas de la base de datos para poderlo reutilizar a lo largo del código
     static protected $db_columns = [
@@ -22,13 +23,10 @@ class BicycleP extends DatabaseObject
     //Crearmos una propiedad estática para que todas las instancias puedan acceder a la conexión de la base de datos.
     public const CATEGORIES = ['road', 'mountain', 'hybrid', 'crusier', 'city', 'BMX'];
 
-    //Como es protected, creamos una función para que pasandole la base de datos desde el inicializador, pueda llevarla
-    // a la variable de clase
+
     public const GENDERS = ['men', 'womens', 'unisex'];
 
-    //Creamos un método para que nos devuelva todos los datos de la base de datos, donde ponemos la query y devolvemos
-    // la query. Este tipo de métodos se tendrán que ir creando para cada una de los tipos de query. La idea es tener
-    // todo lo relacionado con base de datos aquí en la clase objeto.
+
     public const LBSCHANGERATE = 2.2046226218;
     public const CONDITION_OPTIONS = [
         1 => 'Beat up',
@@ -37,19 +35,14 @@ class BicycleP extends DatabaseObject
         4 => 'Great',
         5 => 'Like New'];
 
-    //Buscamos en la base de datos y esperamos que nos deuvelva todos los objetos de la tabla en un array de objetos
-    // llamando al método find_sql y pasando la query como argumento.
+    //las propiedades tienen que ser las mismas que las que tiene el objeto en la base de datos.
 
-    //Buscamos en la base de datos por id y esperamos que nos devuelva un único objeto.
     public $id;
-
-    // ------- END OF ACTIVE RECORD CODE --------
     public $brand;
     public $model;
     public $year;
     public $category;
 
-    //las propiedades tienen que ser las mismas que las que tiene el objeto en la base de datos.
     public $color;
     public $description;
     public $gender;
@@ -57,7 +50,7 @@ class BicycleP extends DatabaseObject
     protected $weight_kg;
     protected $condition_id;
 
-
+    //Creamos el constructor con los argumentos en forma Array
     public function __construct ($args = [])
     {
         /*        $this->brand = $args['brand'] ?? '';
@@ -77,8 +70,6 @@ class BicycleP extends DatabaseObject
         }
 
     }
-
-    //Estos son métodos estáticos porque aún no tenemos la instancia (el objeto) creado y queremos acceder a ellos.
 
     //Función para devolver el nombre del producto con marca, modelo y año
     public function name ()

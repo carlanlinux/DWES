@@ -17,6 +17,7 @@ class DatabaseObject
 
     }
 
+
     public static function find_all ()
     {
         //Modificamos el nombre de la tabla que teníamos antes de bici por el del parámetro de la clase padre, table_name
@@ -25,6 +26,23 @@ class DatabaseObject
         $sql = "SELECT * FROM " . static::$table_name;
         return static::find_sql($sql);
     }
+
+    public static function count_all ()
+    {
+
+        //Aquí cambiamos la query usando count (all) de la tabla de la clase que nos haga la petición.
+        $sql = "SELECT COUNT(*) FROM " . static::$table_name;
+        //Ejecutamos la query y guardamos los resultados en la variable.
+
+        $result_set = self::$database->query($sql);
+        //Queremos conseguir la primera fila y para eso hacemos un fetch array en vez de array asociativo ya que se trata de uno solo
+
+        $row = $result_set->fetch_array();
+        //El resultado no está ahí, sino que es está en la primera posición del array, por lo que usamos shift para sacarlo.
+
+        return array_shift($row);
+    }
+
 
     public static function find_sql ($sql)
     {

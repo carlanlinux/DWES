@@ -2,6 +2,8 @@
 
 require_once('../../../private/initialize.php');
 
+require_login();
+
 //Si es un get request con un ID entonces sale el mensae de si quieres borrarlo si no volvemos a mandar a index
 
 if (!isset($_GET['id'])) {
@@ -19,9 +21,10 @@ if ($bicicle == false) redirect_to(url_for('/staff/bicycles/index.php'));
 // entonces es cuando procedemos a borrar.
 if (is_post_request()) {
 
-    // Delete bicycle
+    // Delete bicycle y poner mensaje en la sesión
     $bicicle->delete();
-    $_SESSION['message'] = 'The bicycle was deleted successfully.';
+    $session->message('The bicycle was deleted successfully.');
+
     redirect_to(url_for('/staff/bicycles/index.php'));
 
 } else {
