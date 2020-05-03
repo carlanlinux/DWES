@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Form Sample</title>
+    <link href="normalize.css" rel="stylesheet"/>
+    <link href="mystyle.css" rel="stylesheet"/>
+
+    <!--[if lt IE 8]>
+    <style>
+        legend {
+            display: block;
+            padding: 0;
+            padding-top: 30px;
+            font-weight: bold;
+            font-size: 1.25em;
+            color: #FFD98D;
+            margin: 0 auto;
+        }
+    </style>
+    <![endif]-->
+
+</head>
+<body>
+<form action="http://iviewsource.com" class="group" id="myform" method="POST" name="theform">
+    <fieldset id="login" title="Login Info">
+        <legend>Login Info</legend>
+        <span class="error" id="formerror"></span>
+        <ol>
+            <li>
+                <label for="myname">Name *</label>
+                <input autofocus id="myname" name="myname" pattern="[A-Za-z ]+, [A-Za-z ]+" placeholder="Last, First"
+                       required title="Please enter your name" type="text"/>
+            </li>
+            <li>
+                <label for="myemail">Email *</label>
+                <input autocomplete="off" id="myemail" name="myemail" required type="email"/>
+            </li>
+            <li>
+                <label for="mypassword">Password</label>
+                <input id="mypassword" name="mypassword" type="password"/>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset class="hidden" id="other" title="Other Info">
+        <legend>Other</legend>
+        <ol>
+            <li>
+                <label for="myurl">Website</label>
+                <input id="myurl" name="myurl" type="url"/>
+            </li>
+            <li>
+                <label for="mytelephone">Telephone</label>
+                <input id="mytelephone" name="mytelephone" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="xxx-xxx-xxxx"
+                       type="tel"/>
+            </li>
+            <li class="singleline">
+                <input CHECKED id="subscribeitem" name="subscribe" type="checkbox" value="yes"/>
+                <label for="subscribeitem">Subscribe to our mailing list?</label>
+            </li>
+            <li>
+                <label for="reference">How did you hear about us?</label>
+                <select id="reference" name="reference">
+                    <option>Choose...</option>
+                    <option value="friend">A friend</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="twitter">Twitter</option>
+                </select>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset class="hidden" id="comments" title="Comments">
+        <legend>Comments</legend>
+        <ol>
+            <li>
+                <div class="grouphead">Request Type</div>
+                <ol>
+                    <li>
+                        <input id="questionitem" name="requesttype" type="radio" value="question"/>
+                        <label for="questionitem">Question</label>
+                    </li>
+                    <li>
+                        <input id="commentitem" name="requesttype" type="radio" value="comment"/>
+                        <label for="commentitem">Comment</label>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <label for="mycomments">Comment</label>
+                <textarea id="mycomments" name="mycomments"></textarea>
+            </li>
+        </ol>
+        <button type="submit">send</button>
+    </fieldset>
+</form>
+<script src="myscript.js"></script>
+</body>
+</html>

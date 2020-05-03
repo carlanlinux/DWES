@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+<body>
+<h1>Controles simples independientes frente a array de controles</h1>
+<form action="procesaArraysParametros.php" method="get" name="f1">
+    <b>CAMPOS DE TEXTO:</b> <br/>
+    <span style="color: orange;">Independientes, pero con nombre
+            duplicado</span> <br/>
+    <table>
+        <tr>
+            <td>Texto simple 1: <input name="textoSimple" type="text"
+                                       value="alfa"/></td>
+            <td>
+                <pre>&lt;input type="text" name="textoSimple" value="alfa" /></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>Texto simple 2: <input name="textoSimple" type="text"
+                                       value="beta"/></td>
+            <td>
+                <pre>&lt;input type="text" name="textoSimple" value="beta" /></pre>
+            </td>
+        </tr>
+    </table>
+    <span style="color: orange;">En array</span> <br/>
+    <table>
+        <tr>
+            <td>Texto array 1: <input name="textoArray[]" type="text"
+                                      value="gamma"/></td>
+            <td>
+                <pre>&lt;input type="text" name="textoArray[]" value="gamma" /></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>Texto array 2: <input name="textoArray[]" type="text" value="delta"/></td>
+            <td>
+                <pre>&lt;input type="text" name="textoArray[]" value="delta" /></pre>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <hr/>
+    <b>CHECKBOX:</b> <br/>
+    <span style="color: orange;">Independientes, pero con nombre duplicado</span> <br/>
+    <label>Inglés</label><input name="cbSimple" type="checkbox" value="English"/>
+    <label>Francés</label><input checked name="cbSimple" type="checkbox" value="Francais"/>
+    <label>Alemán</label><input name="cbSimple" type="checkbox" value="Deutch"/>
+    <br/>
+    <pre>
+            &lt;input type="checkbox" name="cbSimple" value="English" /> 
+            &lt;input type="checkbox" name="cbSimple" checked="true" value="Francais" />
+            &lt;input type="checkbox" name="cbSimple" value="Deutch" />
+	</pre>
+    <span style="color: orange;">En array</span> <br/>
+    <label>Inglés</label><input name="cbArray[]" type="checkbox" value="English"/>
+    <label>Francés</label><input checked name="cbArray[]" type="checkbox" value="Francais"/>
+    <label>Alemán</label><input name="cbArray[]" type="checkbox" value="Deutch"/>
+    <br/>
+    <pre>
+            &lt;input type="checkbox" name="cbArray[]" value="English" /> 
+            &lt;input type="checkbox" name="cbArray[]" checked="true" value="Francais" />
+            &lt;input type="checkbox" name="cbArray[]" value="Deutch" />
+        </pre>
+    <hr/>
+    <input type="reset" value="Resertear el formulario"/>
+    <input type="submit" value="Enviar formulario al servidor"/>
+</form>
+</body>
+</html>

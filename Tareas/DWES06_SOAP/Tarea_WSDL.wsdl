@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://localhost:8888/DWES/Tareas/DWES06_SOAP/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://localhost:8888/DWES/Tareas/DWES06_SOAP/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://localhost:8888/DWES/Tareas/DWES06_SOAP/"/>
+    </wsdl:types>
+    <wsdl:message name="getPVPRequest">
+        <wsdl:part name="cod" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="getPVPResponse">
+        <wsdl:part name="getPVPReturn" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="getStockRequest">
+        <wsdl:part name="id" type="xsd:string"/>
+        <wsdl:part name="tienda" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="getStockResponse">
+        <wsdl:part name="getStockReturn" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="getFamiliasRequest"/>
+    <wsdl:message name="getFamiliasResponse">
+        <wsdl:part name="getFamiliasReturn" type="soap-enc:array"/>
+    </wsdl:message>
+    <wsdl:message name="getProductosFamiliasRequest">
+        <wsdl:part name="codFamilia" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="getProductosFamiliasResponse">
+        <wsdl:part name="getProductosFamiliasReturn" type="soap-enc:array"/>
+    </wsdl:message>
+    <wsdl:portType name="FuncionesSoapPortType">
+        <wsdl:operation name="getPVP">
+            <wsdl:documentation>Esta función recibirá como parámetro el código de un producto, y devolverá el PVP
+                correspondiente al mismo.
+            </wsdl:documentation>
+            <wsdl:input message="tns:getPVPRequest"/>
+            <wsdl:output message="tns:getPVPResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getStock">
+            <wsdl:documentation>Esta función recibirá dos parámetros: el código de un producto y el código de una
+                tienda. Devolverá el stock existente en dicha tienda del producto.
+            </wsdl:documentation>
+            <wsdl:input message="tns:getStockRequest"/>
+            <wsdl:output message="tns:getStockResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getFamilias">
+            <wsdl:documentation>No recibe parámetros y devuelve un array con los códigos de todas las familias
+                existentes.
+            </wsdl:documentation>
+            <wsdl:input message="tns:getFamiliasRequest"/>
+            <wsdl:output message="tns:getFamiliasResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getProductosFamilias">
+            <wsdl:documentation>Recibe como parámetro el código de una familia y devuelve un array con los códigos de
+                todos los productos de esa familia.
+            </wsdl:documentation>
+            <wsdl:input message="tns:getProductosFamiliasRequest"/>
+            <wsdl:output message="tns:getProductosFamiliasResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="FuncionesSoapBinding" type="tns:FuncionesSoapPortType">
+        <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc"
+                          transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getPVP">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/"
+                                soapAction="http://localhost:8888/DWES/Tareas/DWES06_SOAP/serviciow.php?method=getPVP"
+                                style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStock">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/"
+                                soapAction="http://localhost:8888/DWES/Tareas/DWES06_SOAP/serviciow.php?method=getStock"
+                                style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getFamilias">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/"
+                                soapAction="http://localhost:8888/DWES/Tareas/DWES06_SOAP/serviciow.php?method=getFamilias"
+                                style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getProductosFamilias">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/"
+                                soapAction="http://localhost:8888/DWES/Tareas/DWES06_SOAP/serviciow.php?method=getProductosFamilias"
+                                style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded"
+                               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="FuncionesSoap">
+        <wsdl:documentation/>
+        <wsdl:port name="FuncionesSoapPort" binding="tns:FuncionesSoapBinding">
+            <soap-env:address location="http://localhost:8888/DWES/Tareas/DWES06_SOAP/serviciow.php"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,38 @@
+/* 
+    Document   : stylesheet.css
+    Created on : 29-abr-2013, 17:08:40
+    Author     : ivan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.info {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+    font-size: 25px;
+    text-align: left;
+    padding: 50px;
+    border: 5px solid orange
+}
+
+input {
+    font-size: 20px
+}
+
+select {
+    font-size: 20px
+}
+
+.submit {
+    background: orange
+}
+
+

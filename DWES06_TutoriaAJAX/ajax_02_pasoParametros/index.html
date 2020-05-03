@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function suma() {
+            //se crea el objeto Ajax
+            objAJAX = new XMLHttpRequest();
+            /*guardamos en una variable el elemento HTML en el que vamos
+             * a mostrar el resultado de la petición */
+            var capa = document.getElementById("suma");
+            //mediante POST me quiero conectar de forma asíncrona al script
+            objAJAX.open("POST", "ejAJAX.php", true);
+            //modifico la cabacera indicando que el content-type va a ser una url
+            objAJAX.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            //asigna la función anónima al evento onreadystatechange
+            objAJAX.onreadystatechange = function () {
+                //Se comprueba si se ha recibido la respuesta completa
+                if (objAJAX.readyState == 4) {
+                    /* asigno la respuesta, que me ha llegado en forma de cadena
+                     * de caracteres a un elemento de mi página
+                     */
+                    capa.value = objAJAX.responseText;
+                }
+            }
+            /* envíamos la petición  pasándole como parámetros los
+             * números a sumar. Los parámetros se envían de la misma
+             * forma en que se envían con el método get: nombre de parámetro =
+             * valor del parámetro seguidos del símbolo &para separar los parámetros.
+             * Se utiliza el símbolo + para concatenar. Recuerda que es código JavaScript.
+             */
+            objAJAX.send("n1=" + document.getElementById("n1").value + "&n2=" + document.getElementById("n2").value);
+        }
+    </script>
+</head>
+<body>
+<div id="demo" style="width:600px;">
+    <!-- este formulario contiene dos campos input en los que se
+    introducirán dos números, y un tercero, solo de lectura,  en el que se mostrará
+    el resultado de la suma de los dos núemros introducidos
+    Con el atributo step indicamos que el incremento sea de décima
+    en décima y así permitimos decimales!-->
+    <input id="n1" required step=0.1 type="number"/> +
+    <input id="n2" required step=0.1 type="number"/> =
+    <input id="suma" readonly="readonly" type="text"/>
+    <br>
+    <button onclick="suma()" type="button">Suma</button>
+</div>
+</body>
+</html>

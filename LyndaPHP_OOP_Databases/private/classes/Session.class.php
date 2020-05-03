@@ -57,9 +57,9 @@ class Session
 
     //cuando hacemo sun logout, hacemos un unset tanto de la sesión como de la propiedad de la clase. y devolvemos True
 
-    public function is_logged_in ()
+    public function esta_logado ()
     {
-        return isset($this->admin_id) && $this->last_login_is_recent();
+        return isset($this->username) && $this->last_login_is_recent();
 
     }
 

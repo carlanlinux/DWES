@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function muestraXML() {
+            objAJAX = new XMLHttpRequest();
+            var capa = document.getElementById("xml");
+            objAJAX.open("POST", "ejAJAX.php", true);
+            objAJAX.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            objAJAX.onreadystatechange = function () {
+                if (objAJAX.readyState == 4) {
+                    //cogemos la respuesta con la propiedad responseXML
+                    var documento_xml = objAJAX.responseXML;
+                    /* Se coge el valor del nodo "primer hijo" del primer elemento con tag nombre
+                     * y el valor del nodo "primer hijo" del  primer elemento con tag edad*/
+                    var nombre = documento_xml.getElementsByTagName("nombre")[0].firstChild.nodeValue;
+                    var edad = documento_xml.getElementsByTagName("edad")[0].firstChild.nodeValue;
+                    // Ponemos los datos obtenidos en la respuesta en el elemento de la página
+                    capa.innerHTML = "Nombre = " + nombre + " - " + "Edad = " + edad;
+                }
+            }
+            objAJAX.send();
+        }
+    </script>
+</head>
+<body>
+<div id="demo" style="width:600px;">
+    <div id="xml"/>
+    <div>
+        <button onclick="muestraXML()" type="button">XML</button>
+    </div>
+</div>
+</div>
+</body>
+</html>

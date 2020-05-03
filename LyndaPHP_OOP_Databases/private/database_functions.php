@@ -20,6 +20,7 @@ function confirm_db_connect ($connection)
         $msg .= $connection->connect_error;
         $msg .= " (" . $connection->connect_error . ")";
         exit($msg);
+
     }
 }
 

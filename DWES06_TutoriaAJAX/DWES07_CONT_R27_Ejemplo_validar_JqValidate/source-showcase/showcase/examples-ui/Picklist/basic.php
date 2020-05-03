@@ -1,0 +1,135 @@
+<pre>
+<?php echo htmlentities(file_get_contents(__FILE__, true, null, 92)) ?>
+</pre>
+<br/>
+<button id="btnOpenDialog">Show Demo</button>
+<?php echo YsUIDialog::initWidget('dialogId',
+    'style="display:none"
+                                   title="Demo"') ?>
+
+<select id="countries" class="multiselect" multiple="multiple" name="countries[]">
+    <option value="AFG">Afghanistan</option>
+    <option value="ALB">Albania</option>
+    <option value="DZA">Algeria</option>
+    <option value="AND">Andorra</option>
+    <option value="ARG">Argentina</option>
+    <option value="ARM">Armenia</option>
+    <option value="ABW">Aruba</option>
+    <option value="AUS">Australia</option>
+    <option value="AUT" selected="selected">Austria</option>
+
+    <option value="AZE">Azerbaijan</option>
+    <option value="BGD">Bangladesh</option>
+    <option value="BLR">Belarus</option>
+    <option value="BEL">Belgium</option>
+    <option value="BIH">Bosnia and Herzegovina</option>
+    <option value="BRA">Brazil</option>
+    <option value="BRN">Brunei</option>
+    <option value="BGR">Bulgaria</option>
+    <option value="CAN">Canada</option>
+
+    <option value="CHN">China</option>
+    <option value="COL">Colombia</option>
+    <option value="HRV">Croatia</option>
+    <option value="CYP">Cyprus</option>
+    <option value="CZE">Czech Republic</option>
+    <option value="DNK">Denmark</option>
+    <option value="EGY">Egypt</option>
+    <option value="EST">Estonia</option>
+    <option value="FIN">Finland</option>
+
+    <option value="FRA">France</option>
+    <option value="GEO">Georgia</option>
+    <option value="DEU" selected="selected">Germany</option>
+    <option value="GRC">Greece</option>
+    <option value="HKG">Hong Kong</option>
+    <option value="HUN">Hungary</option>
+    <option value="ISL">Iceland</option>
+    <option value="IND">India</option>
+    <option value="IDN">Indonesia</option>
+
+    <option value="IRN">Iran</option>
+    <option value="IRL">Ireland</option>
+    <option value="ISR">Israel</option>
+    <option value="ITA">Italy</option>
+    <option value="JPN">Japan</option>
+    <option value="JOR">Jordan</option>
+    <option value="KAZ">Kazakhstan</option>
+    <option value="KWT">Kuwait</option>
+    <option value="KGZ">Kyrgyzstan</option>
+
+    <option value="LVA">Latvia</option>
+    <option value="LBN">Lebanon</option>
+    <option value="LIE">Liechtenstein</option>
+    <option value="LTU">Lithuania</option>
+    <option value="LUX">Luxembourg</option>
+    <option value="MAC">Macau</option>
+    <option value="MKD">Macedonia</option>
+    <option value="MYS">Malaysia</option>
+    <option value="MLT">Malta</option>
+
+    <option value="MEX">Mexico</option>
+    <option value="MDA">Moldova</option>
+    <option value="MNG">Mongolia</option>
+    <option value="NLD" selected="selected">Netherlands</option>
+    <option value="NZL">New Zealand</option>
+    <option value="NGA">Nigeria</option>
+    <option value="NOR">Norway</option>
+    <option value="PER">Peru</option>
+    <option value="PHL">Philippines</option>
+
+    <option value="POL">Poland</option>
+    <option value="PRT">Portugal</option>
+    <option value="QAT">Qatar</option>
+    <option value="ROU">Romania</option>
+    <option value="RUS">Russia</option>
+    <option value="SMR">San Marino</option>
+    <option value="SAU">Saudi Arabia</option>
+    <option value="CSG">Serbia and Montenegro</option>
+    <option value="SGP">Singapore</option>
+
+    <option value="SVK">Slovakia</option>
+    <option value="SVN">Slovenia</option>
+    <option value="ZAF">South Africa</option>
+    <option value="KOR">South Korea</option>
+    <option value="ESP">Spain</option>
+    <option value="LKA">Sri Lanka</option>
+    <option value="SWE">Sweden</option>
+    <option value="CHE">Switzerland</option>
+    <option value="SYR">Syria</option>
+
+    <option value="TWN">Taiwan</option>
+    <option value="TJK">Tajikistan</option>
+    <option value="THA">Thailand</option>
+    <option value="TUR">Turkey</option>
+    <option value="TKM">Turkmenistan</option>
+    <option value="UKR">Ukraine</option>
+    <option value="ARE">United Arab Emirates</option>
+    <option value="GBR">United Kingdom</option>
+    <option value="USA" selected="selected">United States</option>
+
+    <option value="UZB">Uzbekistan</option>
+    <option value="VAT">Vatican City</option>
+    <option value="VEN" selected="selected">Venezuela</option>
+    <option value="VNM">Vietnam</option>
+
+</select>
+
+<?php echo YsUIDialog::endWidget() ?>
+
+<?php
+echo
+YsJQuery::newInstance()
+    ->onClick()
+    ->in('#btnOpenDialog')
+    ->execute(
+        YsUIDialog::build('#dialogId')
+            ->_modal(true)
+            ->_width(350)
+            ->_buttons(array(
+                    'Ok' => new YsJsFunction('alert("Hello world")'),
+                    'Close' => new YsJsFunction(YsUIDialog::close('this')))
+            ),
+        YsUIPickList::build()->in('#countries')
+    );
+?>

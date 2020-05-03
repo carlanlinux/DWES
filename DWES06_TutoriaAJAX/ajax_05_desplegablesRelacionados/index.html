@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function cargaNombres() {
+            var sexo = document.getElementById("sexo");
+            var nombre = document.getElementById("nombre");
+            /* si no se ha elegido una opción del primer desplegable
+             * el segundo desplegable debe estar deshabilitado y mostrar el
+             * mensaje "Elige antes sexo" y se hace un return, porque no se
+             * ha seleccionado nada.
+             * Si ha elegido una opción el segundo desplegable se habilita.
+             */
+            if (sexo.selectedIndex == 0) {
+                var html = "<option>Elige antes sexo<\/option>";
+                document.getElementById("nombre").innerHTML = html;
+                nombre.disabled = true;
+                return;
+            } else {
+                nombre.disabled = false;
+            }
+            var objAJAX = new XMLHttpRequest();
+            objAJAX.open("POST", "ejAJAX.php", true);
+            objAJAX.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            objAJAX.onreadystatechange = function () {
+                if (objAJAX.readyState == 4) {
+                    //recibiremos la respuesta en formato XML
+                    var docXML = objAJAX.responseXML;
+                    var listaNombres = docXML.getElementsByTagName("nombre");
+                    var listaValores = docXML.getElementsByTagName("valor");
+
+                    var html = "";
+                    /*
+                     * Tratamos los datos recibidos en un bucle. No llegan
+                     * nombres de hombres o mujeres (en función de la opción
+                     * elegida en el primer desplegable, y un valor que será el
+                     * que sea el atributo value de cada opcín del nuevo
+                     * despelgable
+                     */
+                    for (i = 0; i < listaNombres.length; i++) {
+                        var nom = listaNombres[i].firstChild.nodeValue;
+                        var val = listaValores[i].firstChild.nodeValue;
+                        html += "<option value=\"" + val + "\">" + nom + "<\/option>";
+                    }
+                    /*
+                     * Cambiamos contenido del segundo desplegable poniendo
+                     * los valores que nos han llegado como respuesta a la
+                     * petición Ajax.
+                     */
+                    document.getElementById("nombre").innerHTML = html;
+                }
+            }
+            /* se envía la petición, pasándo como parámetro la opción 
+             * elegida en el primer desplegable.
+             */
+            objAJAX.send("sexo=" + sexo.options[sexo.selectedIndex].value);
+
+        }
+
+        window.onload = function () {
+            document.getElementById("sexo").onchange = cargaNombres;
+        }
+    </script>
+</head>
+<body>
+<form>
+    <label for="sexo">Sexo</label>
+    <select id="sexo">
+        <option></option>
+        <option>Hombre</option>
+        <option>Mujer</option>
+    </select>
+    <br/><br/>
+    <label for="nombre">Nombre</label>
+    <select disabled id="nombre">
+        <option>Elige antes sexo</option>
+    </select>
+</form>
+</body>
+</html>
