@@ -57,5 +57,5 @@ function buscar_partida (Usuario $objeto_usuario)
 
 function actualizar_partida (Partida $partida)
 {
-    Partida::actualizar_partida($partida);
+    return Partida::actualizar_partida($partida);
 }

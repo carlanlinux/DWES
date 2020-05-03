@@ -58,8 +58,8 @@ class Partida
     {
         //UPDATE usuario SET partida = value WHERE id= value
         $sql = "UPDATE " . self::$table_name;
-        $sql .= " SET tablero =" . $partida->tablero;
-        $sql .= ", terminada=" . $partida->terminada;
+        $sql .= " SET tablero ='" . $partida->tablero;
+        $sql .= "', terminada=" . $partida->terminada;
         $sql .= " WHERE ";
         $sql .= "partida=";
         $sql .= $partida->partida;
@@ -151,7 +151,7 @@ class Partida
         $random_posicion_nueva = random_int(0, $contador_libres - 1);
         //Si tenemos más de 3 posiciones libres en el tablero quiere decir que no se han desplegado las 3 fichas de cada
         // jugador por lo que sólo necesitamos un random para saber en qué casilla poner la ficha.
-        if ($contador_libres - 1 > 3) {
+        if ($contador_libres > 3) {
             //** 1.Creamos un objeto donde guardamos el JSON decoded del tablero */
             //** 2.Metemos la posición que nos ha salido en el random de todas las posiciones libres del JSON */
             //** 3.Guardamos en la propiedad de la clase tablero el json encoded de nuevo */
@@ -184,8 +184,9 @@ class Partida
                 $comprobacion .= $tablero->{"{$i}_{$j}"};
                 if ($comprobacion === "111") return 1;
                 if ($comprobacion === "222") return 2;
-                $comprobacion = "";
+                $comprobacion .= "";
             }
+            $comprobacion = "";
         }
 
         //Comprobamos las columnas
@@ -196,8 +197,9 @@ class Partida
                 $comprobacion .= $tablero->{"{$j}_{$i}"};
                 if ($comprobacion === "111") return 1;
                 if ($comprobacion === "222") return 2;
-                $comprobacion = "";
+                $comprobacion .= "";
             }
+            $comprobacion = "";
         }
         //Comprobamos las diagonal \
         $comprobacion = "";
@@ -208,25 +210,18 @@ class Partida
                     $comprobacion .= $tablero->{"{$i}_{$j}"};
                     if ($comprobacion === "111") return 1;
                     if ($comprobacion === "222") return 2;
-                    $comprobacion = "";
+                    $comprobacion .= "";
                 }
             }
         }
 
         //Comprobamos las diagonal /
-        $comprobacion = "";
-        for ($i = 1; $i <= 3; $i++) {
-            for ($j = 1; $j <= 3; $j++) {
-                //si tanto la i como la j valen lo mismo es que son la diagona, y entonces realizamos la comprobación
-                if ($i === $j) {
-                    //Se recorre el bucle a la inversa (cambiando en el json la j por la i y biceversa.
-                    $comprobacion .= $tablero->{"{$j}_{$i}"};
-                    if ($comprobacion === "111") return 1;
-                    if ($comprobacion === "222") return 2;
-                    $comprobacion = "";
-                }
-            }
-        }
+        //Concatenamos el valor de las posiciones del la diagonal del tablero y comprobamos si es combinación ganadora
+        $comprobacion = $tablero->{"3_1"} . $tablero->{"2_2"} . $tablero->{"1_3"};
+        if ($comprobacion === "111") return 1;
+        if ($comprobacion === "222") return 2;
+
+        //Si no se encuantra combinacón devolvemos 0 porque nadie ha ganado.
         return 0;
     }
 

@@ -8,6 +8,10 @@ if (!isset($_SESSION['username'])) {
 $usuario = buscar_usuario($_SESSION['username']);
 //Creamos una variable para luego guardar la partida
 $partida = null;
+$victoria = 0;
+$mensaje = "";
+
+
 //Comprobamos si el usuario tiene alguna partida comprobando la propiedad partida del objeto
 if ($usuario->partida == null) {
     //Creamos la partida usando la partida del usuario mandando el usuario
@@ -19,7 +23,7 @@ if ($usuario->partida == null) {
     $partida = buscar_partida($usuario);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['posicion_inicial']) && $_POST['posicion_inicial'] != "") {
     //Guardamos los datos
     $posicion_inicial = filter_var($_POST["posicion_inicial"], FILTER_SANITIZE_STRING);
     //Si no vienen datos en la final le damos null ( PHP7)
@@ -41,18 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuario->partidas_totales += 1;
         actualizar_usuario($usuario);
         actualizar_partida($partida);
-        echo "//Aviso de enhorabuena y globitos";
-    }
+        $mensaje = "<div><p>Usted ha jugado: {$usuario->partidas_totales}</p>";
+        $mensaje .= "<p>Usted ha jugado: {$usuario->partidas_ganadas}</p></div>";
 
-    $partida->jugar_maquina();
-    $victoria = $partida->comprobar_victoria();
-    if ($victoria == 2) {
+    } else {
+        $partida->jugar_maquina();
+        $victoria = $partida->comprobar_victoria();
+        if ($victoria == 2) {
+            $partida->terminada = 1;
+            $usuario->partidas_totales += 1;
+            actualizar_usuario($usuario);
+            actualizar_partida($partida);
 
-        $partida->terminada = 1;
-        $usuario->partidas_totales += 1;
-        actualizar_usuario($usuario);
-        actualizar_partida($partida);
-        echo "//Aviso de mala suerte y cara triste";
+        }
     }
     actualizar_partida($partida);
 }
@@ -149,14 +154,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <h1>Partida de <?php echo $usuario->nombre_usuario ?></h1>
+<?php if ($victoria == 1) {
+    echo "Enhorabuena ha ganado!";
+    echo $mensaje;
+}?>
+<?php if ($victoria == 2) {
+echo "Lo siento ha perdido!";
+    echo $mensaje;
+} ?>
 <div id="container">
-    <?php echo $partida->crearTablero(); ?>
+    <?php if ($victoria == 0) echo $partida->crearTablero();
+          if ($victoria == 1) echo "<img class='finpartida' src='congrats.png'>";
+          if ($victoria == 2) echo "<img class='finpartida' src='gameover.png'>";
+    ?>
 </div>
 <form name="enviar_posicion" action="" method="post">
+<?php if ($victoria == 0 ) {?>
+
     <input type="hidden" id="posicion_inical" name="posicion_inicial" value="">
     <input type="hidden" id="posicion_final" name="posicion_final" value="">
     <input type="submit">
 </form>
 <button id="reset">Resetear movimientos</button>
+<?php
+} else {
+    ?>
+    <input type="button" name="cerrar_sesion" value="Cerrar Sesión">
+    <input type="button" name="nueva_partida" value="Nueva Partida">
+    </form>
+<?php
+}
+?>
 </body>
 </html>
