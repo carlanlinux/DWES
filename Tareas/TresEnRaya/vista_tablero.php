@@ -11,6 +11,16 @@ $partida = null;
 $victoria = 0;
 $mensaje = "";
 
+//Comprobamos si nos viene algo por post y si está el cerrar sesión, entonces destruimos la sesión y mandamos index
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cerrar_sesion'])) {
+    session_destroy();
+    header("Location: " . "index.php");
+    exit;
+}
+//Comprobamos que nos viene por post y que está el valor nueva partida, entonces la partida la ponemos en null.
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nueva_partida'])) {
+    $usuario->partida = NULL;
+}
 
 //Comprobamos si el usuario tiene alguna partida comprobando la propiedad partida del objeto
 if ($usuario->partida == null) {
@@ -21,6 +31,13 @@ if ($usuario->partida == null) {
 } else {
     //Buscamos la partida para pintar el tablero
     $partida = buscar_partida($usuario);
+    //Comprobamos si el usuario ha ganado o no y pintamos los mensajes para el caso que la partida esté acabada
+    $victoria = $partida->comprobar_victoria();
+    if ($victoria !=0 ) {
+        $mensaje = "<div><p>Usted ha jugado: {$usuario->partidas_totales}</p>";
+        $mensaje .= "<p>Usted ha jugado: {$usuario->partidas_ganadas}</p></div>";
+    }
+    //Si la partida esta terminada creamos una nueva
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['posicion_inicial']) && $_POST['posicion_inicial'] != "") {
@@ -179,8 +196,8 @@ echo "Lo siento ha perdido!";
 <?php
 } else {
     ?>
-    <input type="button" name="cerrar_sesion" value="Cerrar Sesión">
-    <input type="button" name="nueva_partida" value="Nueva Partida">
+    <input type="submit" name="cerrar_sesion" value="Cerrar Sesión">
+    <input type="submit" name="nueva_partida" value="Nueva Partida">
     </form>
 <?php
 }

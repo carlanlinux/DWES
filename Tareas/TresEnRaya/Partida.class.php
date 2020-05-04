@@ -73,7 +73,7 @@ class Partida
     public static function buscar_partida (Usuario $usuario)
     {
         $sql = "SELECT * from " . static::$table_name;
-        $sql .= " WHERE id_usuario='" . $usuario->partida . "'";
+        $sql .= " WHERE partida=" . $usuario->partida;
         $result = self::$database->query($sql);
         $partida = $result->fetch_assoc();
         if ($usuario->partida == $partida['partida']) {
