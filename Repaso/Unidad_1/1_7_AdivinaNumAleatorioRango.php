@@ -7,26 +7,21 @@
 <body>
 <h1>Calculadora de edad</h1>
 <?php
-    if (isset($_POST['fecha_nacimiento'])){
-        //Creamos dos obejtos fecha uno con la de ahora y otro con la de fecha actual
-        $fecha_nacimiento = new DateTime($_POST['fecha_nacimiento']);
-        $fecha_actual = new DateTime("now");
-        $msj = "";
-
-        if ($fecha_actual < $fecha_nacimiento) {
-            $msj = "Todavía no has nacido";
-        } else{
-            //Hacemos la resta de las fechas dando formato pidiendo que nos saque los años (días sería d y meses m)
-            $anos = $fecha_actual->format("Y") - $fecha_nacimiento->format("Y");
-            $msj = "Tienes " . $anos . " años";
-            echo "<h3> ". $msj ." </h3>";
-        }
-
-    }
+if (isset($_POST)) {
+    $input_post = filter_input_array(INPUT_POST, FILTER_SANITIZE_NUMBER_INT);
+    $random = mt_rand($input_post['numero_minimo'],$input_post['numero_maximo']);
+    if ($random > $input_post['nummero_medio']) echo "El número random es " . $random . "mayor al número intermedio" . $input_post['nummero_medio'] . ".";
+    if ($random == $input_post['nummero_medio']) echo "El número random es " . $random . "igual que el número intermedio" . $input_post['nummero_medio'] . ".";
+    if ($random < $input_post['nummero_medio']) echo "El número random es " . $random . "menor al número intermedio" . $input_post['nummero_medio'] . ".";
+}
 ?>
-<form action="" method="post">
-    <input type="number">
-    <input type="date" name="fecha_nacimiento" required>
+<form action="" method="post" name="numero">
+    <label for="numero_minimo">Número mínimo:</label>
+    <input id="numero_minimo" type="number" name="numero_minimo"  required>
+    <label for="numero_medio">Número mínimo</label>
+    <input id="numero_medio" type="number" name="numero_medio" required>
+    <label for="numero_minimo">Número mínimo</label>
+    <input id="numero_maximo" type="number" name="numero_maximo" required>
     <input type="submit" value="Enviar">
 </form>
 
