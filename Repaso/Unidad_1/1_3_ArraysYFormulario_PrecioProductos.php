@@ -11,8 +11,10 @@ $array_articulos= ['Ordenador'=>1600,
     'Raton' => 70,
     'Dock' => 30
         ];
-if (isset($_POST['productos']))
-    $compra = $_POST['productos'];
+if (isset($_POST))
+    //recogemos todos los datos de post en un array con una sóla línea.
+    $datospost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +24,23 @@ if (isset($_POST['productos']))
     <title>Tienda Online</title>
 </head>
 <body>
+<span>
+    <?php
+    if (isset($datospost)){
+        echo "Ha seleccionado los siguientes productos<br>";
+        $totalcesta = 0;
+        foreach ($datospost as $producto=>$precio){
+            echo "{$producto} | {$precio} EUR <br>";
+            $totalcesta += $precio;
+        }
+        echo "<hr>Productos totales: " . sizeof($datospost) . "<br>Importe total del pedido {$totalcesta}";
+    }
+    ?>
+</span>
 <h1>Selección de artículos</h1>
 <form name="producto" action="" method="post">
     <?php foreach ($array_articulos as $producto => $precio) {
-        echo "<input id='" . $producto . "' type='checkbox' name='" . $producto . "' value='" . $producto . "'>";
+        echo "<input id='" . $producto . "' type='checkbox' name='" . $producto . "' value='" . $precio . "'>";
         echo "<label for={$producto}>{$producto} - Precio - {$precio} EUR</label><br>";
     }
     ?>
