@@ -8,13 +8,16 @@
 <h1>Calculadora de edad</h1>
 <?php
 
-/*8) Resumen de temperaturas
-• Escribe un programa PHP que permita al usuario introducir las temperaturas medias de las ciudades de Madrid, Barcelona,
- Sevilla y Bilbao en cada uno de los meses del año.
-• El programa mostrará calculará la Temp. Max, Temp. Min y Temp. del año completo.*/
+/*scribe un programa PHP que permita al usuario introducir las temperaturas máximas y mínimas de las ciudades de Madrid,
+ Barcelona, Sevilla y Bilbao en cada uno de los meses del año.
+• El programa mostrará una tabla con columnas correspondientes al nombre de la ciudad, Temp. Max, Temp. Min y Temp.
+ Media ordenadas alfabéticamente.*/
 
 //Fijamos en una constante el número de las ciudades
 define("NUM_CUIDADES", 4);
+$nombre_ciudades = ["Barcelona", "Bilbao", "Madrid", "Sevilla"];
+$nombre_meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+$numero_cajas = ['Temperatura Maxima', 'Temperatura Minima'];
 
 if (isset($_POST['Madrid'])) {
     //Metemos los datos del input en un array filtrados como enteros y nos devuelve un array con un array asociativo dentro Cuidade->Mes[valor]
@@ -30,7 +33,6 @@ if (isset($_POST['Madrid'])) {
     foreach ($input_post as $ciudades => $tipo_temperatura){
             //Nos recorremos el array del tipo de temperatura como temperaturas
         foreach ($tipo_temperatura as $temper) {
-            sort($temper, SORT_DESC);
             //Nos recorremos el array que tiene las temperaturas de cada tipo de temperatura para sacar los valores de
             // la temperatura y sumarlos para hacer la media
             for ($i = 0; $i < 12; $i++) {
@@ -43,13 +45,29 @@ if (isset($_POST['Madrid'])) {
         $input_post[$ciudades]['TemperaturaMedia'] = $temp_media;
         $temperatura = 0;
     }
+
+    echo "<table><tr><th>Nombre ciudad</th><th>Temperatura Máxima</th><th>Temperatura Mínima</th><th>Temperatura Media</th></tr>";
+    foreach ($input_post as $ciudades => $tipo_temperatura){
+        if ($tipo_temperatura == 'TemperaturaMedia') {
+            $media = $tipo_temperatura[0];
+        }
+        echo "<tr><td>$ciudades<td>";
+        foreach ($tipo_temperatura as $temper){
+            if ($tipo_temperatura = 'Temperatura Maxima') $max = max($temper);
+            if ($tipo_temperatura = 'Temperatura Minima') $min = min($temper);
+            echo "<td>$max</td><td>$min</td><td>$media</td></tr>";
+        }
+    }
+    echo "/table>";
+
+
+
+
+
 }
 ?>
 <?php
 ////// *******************************        CREACIÓN FORM CON BUCLES       ***********************************   /////
-$nombre_ciudades = ["Barcelona", "Bilbao", "Madrid", "Sevilla"];
-$nombre_meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-$numero_cajas = ['Temperatura Maxima', 'Temperatura Minima'];
 
 echo "<form name='temperaturas' action='' method='post'>";
 foreach ($nombre_ciudades as $ciudad) {
