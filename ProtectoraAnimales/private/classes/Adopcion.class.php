@@ -18,10 +18,15 @@ class Adopcion extends Crud
         $this->conexion = parent::__construct(self::TABLA);
     }
 
-    public function __set ($name, $value)
+    public function __set ($propiedad, $valor)
     {
-        //Rellenamos los parámetros que se nos pasen en las propiedades de la clase.
-        $this->data[$name] = $value;
+        //mira si existe la propiedad $var en la clase, y si es así le asigna el valor que
+        //se pasa por parámetro
+        //__CLASS__ es una constante predefinida en PHP que contiene el nombre de la clase
+        //echo "CLASE:".__CLASS__;
+        if (property_exists(__CLASS__, $propiedad)) {
+            $this->$propiedad = $valor;
+        }
     }
 
     //Devolvemos el dato que se solicite

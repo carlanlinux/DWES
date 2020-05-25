@@ -28,7 +28,13 @@ class Animal extends Crud
 
     public function __set ($propiedad, $valor)
     {
-        $this->$propiedad = $valor;
+        //mira si existe la propiedad $var en la clase, y si es así le asigna el valor que
+        //se pasa por parámetro
+        //__CLASS__ es una constante predefinida en PHP que contiene el nombre de la clase
+        //echo "CLASE:".__CLASS__;
+        if (property_exists(__CLASS__, $propiedad)) {
+            $this->$propiedad = $valor;
+    }
     }
 
     //Devolvemos el dato que se solicite
