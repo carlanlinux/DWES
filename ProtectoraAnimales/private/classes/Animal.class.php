@@ -1,7 +1,6 @@
 <?php
 
 
-
 class Animal extends Crud
 {
     private int $id;
@@ -11,7 +10,7 @@ class Animal extends Crud
     private string $genero;
     private string $color;
     private int $edad;
-    private $conexion;
+    private PDO $conexion;
     private const TABLA = "animal";
 
     public function __construct ($nombre, $especie, $raza, $genero, $color, int $edad)
@@ -59,13 +58,14 @@ class Animal extends Crud
                 //Estos son string y ya usamos Param, cogemos la variable que queremos asignar e incluimos el tipo de datos con
                 // una constante PDO para indicar si es INT o qué tipo: PDO::PARAM_INT
                 //Ejecutamos la consulta preparada
-                $stmt->bindParam(':table', self::TABLA);
+                $a = self::TABLA;
+                $stmt->bindParam(':table', $a, PDO::PARAM_STR);
                 $stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
                 $stmt->bindParam(':especie', $this->especie, PDO::PARAM_STR);
                 $stmt->bindParam(':raza', $this->raza, PDO::PARAM_STR);
                 $stmt->bindParam(':genero', $this->genero, PDO::PARAM_STR);
                 $stmt->bindParam(':color', $this->color, PDO::PARAM_STR);
-                $stmt->bindParam(':edad', $this->edad, PDO::PARAM_STR);
+                $stmt->bindParam(':edad', $this->edad, PDO::PARAM_INT);
                 $affected = $stmt->execute();
                 if ($affected) {
                     //Devuelve el último Id que se ha insertado

@@ -1,16 +1,15 @@
 <?php
 
-
 abstract class Crud extends Conexion
 {
     private $table;
-    private $db;
+    protected $db;
 
     public function __construct (String $table)
     {
         $this->table = $table;
-       return $this->db = parent::setConnection();
-       //return $this->db;
+       $this->db = parent::setConnection();
+       return $this->db;
 
     }
 

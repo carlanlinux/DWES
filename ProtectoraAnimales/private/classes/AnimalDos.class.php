@@ -1,7 +1,6 @@
 <?php
 
 
-
 class AnimalDos extends Crud
 {
     private int $id;
