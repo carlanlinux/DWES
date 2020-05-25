@@ -1,5 +1,6 @@
 <?php //Cargamos la página de inicializar que está en la carpeta privada
-require_once('../private/initialize.php'); ?>
+require_once('../private/initialize.php');
+?>
 
 <?php //Carga la cabecera que está dentro de la carpeta privada en las compartidas. Se encarga básicamente de cambiar
 // el titulo de la página
