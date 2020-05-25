@@ -35,13 +35,13 @@ foreach (glob('classes/*.class.php') as $fileClass) {
 
 
   // Cargo Automáticamente las clases
-function my_autoload($class){
+function myAutoload($class){
   if (preg_match("/\A\w+\Z/",$class)) {
     //Ponemos el include de la localización
     include '../private/classes/' . $class . ".class.php";
   }
 }
 
-spl_autoload_register('my_autoload');
+spl_autoload_register('myAutoload');
 
 ?>

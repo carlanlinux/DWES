@@ -13,7 +13,8 @@ class Conexion
 
     protected function setConnection() {
         try {
-           return new PDO(self::DSN, self::DB_USER, self::DB_PASS);
+           $pdo = new PDO(self::DSN, self::DB_USER, self::DB_PASS);
+            return $pdo;
         }
         catch (Exception $e) {
             exit($e->getMessage());

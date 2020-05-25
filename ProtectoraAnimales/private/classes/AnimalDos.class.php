@@ -2,7 +2,7 @@
 
 
 
-class Animal extends Crud
+class AnimalDos extends Crud
 {
     private int $id;
     private string $nombre;
@@ -16,7 +16,7 @@ class Animal extends Crud
 
     public function __construct ($nombre, $especie, $raza, $genero, $color, int $edad)
     {
-        $this->conexion = parent::__construct(Animal::TABLA);
+        $this->conexion = parent::__construct(self::TABLA);
         $this->nombre = $nombre;
         $this->especie = $especie;
         $this->raza = $raza;
@@ -34,14 +34,18 @@ class Animal extends Crud
     //Devolvemos el dato que se solicite
     public function __get ($name)
     {
-        //TODO rellenar método
+        if (isset($this->$name)) {
+            return $this->data[$name];
+        } else {
+            return false;
+        }
     }
 
 
     protected function crear () {
             try {
                 //Usar el nombre del parámetro con :nombreTabla, la misma que la columna en la BD
-                $sql = "INSERT INTO :table (nombre, especie, raza, genero, color, edad) VALUES (:nombre, :especie, :raza, :genero, :color, :edad)";
+                $sql = "INSERT INTO ? (nombre, especie, raza, genero, color, edad) VALUES (?, ?, ?, ?, ?, ?)";
                 //Creamos la consulta preparada desde el objeto de conexión de base de datos y le pasamos el SQL
                 $stmt = $this->conexion->prepare($sql);
                 //Bind value para calculos y expresiones BiddPAram para variables
@@ -49,14 +53,8 @@ class Animal extends Crud
                 //Estos son string y ya usamos Param, cogemos la variable que queremos asignar e incluimos el tipo de datos con
                 // una constante PDO para indicar si es INT o qué tipo: PDO::PARAM_INT
                 //Ejecutamos la consulta preparada
-                $stmt->bindValue(':table', Animal::TABLA);
-                $stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
-                $stmt->bindParam(':especie', $this->especie, PDO::PARAM_STR);
-                $stmt->bindParam(':raza', $this->raza, PDO::PARAM_STR);
-                $stmt->bindParam(':genero', $this->genero, PDO::PARAM_STR);
-                $stmt->bindParam(':color', $this->color, PDO::PARAM_STR);
-                $stmt->bindParam(':edad', $this->edad, PDO::PARAM_STR);
-                $affected = $stmt->execute();
+                $affected = $stmt->execute(array(self::TABLA,$this->nombre,$this->especie, $this->raza,
+                    $this->genero, $this->color, $this->edad));
                 if ($affected) {
                     //Devuelve el último Id que se ha insertado
                     echo $affected . " row inserted with ID " . $this->id = $this->conexion->lastInsertId();

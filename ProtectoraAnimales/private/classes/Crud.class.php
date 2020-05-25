@@ -9,8 +9,9 @@ abstract class Crud extends Conexion
     public function __construct (String $table)
     {
         $this->table = $table;
-        $this->db = parent::setConnection();
-        return $this->db;
+       return $this->db = parent::setConnection();
+       //return $this->db;
+
     }
 
     public function obtieneTodos() {
