@@ -11,13 +11,13 @@
   define("PUBLIC_PATH", PROJECT_PATH . '/public');
   define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
-  // Assign the root URL to a PHP constant
-  // * Do not need to include the domain
-  // * Use same document root as webserver
-  // * Can set a hardcoded value:
-  // define("WWW_ROOT", '/~kevinskoglund/chain_gang/public');
+  // Asignamos la raiz de la URL del sitio a la constante PHP
+  // * No hay que incluir el dominio
+  // * Usar el mismo document root que el webserver
+  // * Se podría hacer hardodeado con defines:
+  // define("WWW_ROOT", '/DWES/ProtectoraAnimales/public/');
   // define("WWW_ROOT", '');
-  // * Can dynamically find everything in URL up to "/public"
+  // * Lo ponemos de forma dinámica para que lo encuentre en la URL hasta /public
   $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
   $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
   define("WWW_ROOT", $doc_root);
