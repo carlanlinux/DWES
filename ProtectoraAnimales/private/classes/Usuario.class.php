@@ -27,13 +27,13 @@ class Usuario extends Crud
     }
 
     //Devolvemos el dato que se solicite
-    public function __get ($name)
+    public function __get ($propiedad)
     {
-        if (isset($this->data[$name])) {
-            return $this->data[$name];
-        } else {
-            return false;
-        }
+        if (property_exists(__CLASS__, $propiedad)) {
+            return $this->$propiedad;
+        } else
+            return "método __get() NO existe el atributo '"
+                . $propiedad . "'<br/>";
     }
 
 

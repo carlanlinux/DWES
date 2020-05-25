@@ -32,9 +32,13 @@ class Animal extends Crud
     }
 
     //Devolvemos el dato que se solicite
-    public function __get ($name)
+    public function __get ($propiedad)
     {
-        //TODO rellenar método
+        if (property_exists(__CLASS__, $propiedad)) {
+            return $this->$propiedad;
+        } else
+            return "método __get() NO existe el atributo '"
+                . $propiedad . "'<br/>";
     }
 
 
@@ -49,7 +53,7 @@ class Animal extends Crud
                 //Estos son string y ya usamos Param, cogemos la variable que queremos asignar e incluimos el tipo de datos con
                 // una constante PDO para indicar si es INT o qué tipo: PDO::PARAM_INT
                 //Ejecutamos la consulta preparada
-                $stmt->bindValue(':table', Animal::TABLA);
+                $stmt->bindValue(':table', self::TABLA);
                 $stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
                 $stmt->bindParam(':especie', $this->especie, PDO::PARAM_STR);
                 $stmt->bindParam(':raza', $this->raza, PDO::PARAM_STR);

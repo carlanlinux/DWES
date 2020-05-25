@@ -1,4 +1,5 @@
 <?php
+//Para heredar neesito incluir el fichero
 require 'Coche.php';
 
 class CocheDeLujo extends Coche
