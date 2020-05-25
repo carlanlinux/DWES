@@ -53,7 +53,7 @@ class Animal extends Crud
                 //Estos son string y ya usamos Param, cogemos la variable que queremos asignar e incluimos el tipo de datos con
                 // una constante PDO para indicar si es INT o qué tipo: PDO::PARAM_INT
                 //Ejecutamos la consulta preparada
-                $stmt->bindValue(':table', self::TABLA);
+                $stmt->bindParam(':table', self::TABLA);
                 $stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
                 $stmt->bindParam(':especie', $this->especie, PDO::PARAM_STR);
                 $stmt->bindParam(':raza', $this->raza, PDO::PARAM_STR);
